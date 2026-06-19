@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alejandro Salamanca</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(0,0,0,.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);height:48px;display:flex;align-items:center;justify-content:center}
+nav a{color:#fff;text-decoration:none;font-size:12px;font-weight:400;padding:0 24px;transition:opacity .2s}
+nav a:hover{opacity:.7}
+section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+.hero{background:#000;color:#fff}
+.hero h1{font-size:56px;font-weight:600;line-height:1.07;letter-spacing:-.28px;margin-bottom:12px}
+.hero p{font-size:21px;font-weight:400;line-height:1.19;letter-spacing:.231px;color:rgba(255,255,255,.8);margin-bottom:32px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.48);letter-spacing:-.224px;margin-bottom:24px}
+.cta-group{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.cta-pill{display:inline-flex;align-items:center;gap:4px;padding:8px 20px;border-radius:980px;font-size:14px;text-decoration:none;transition:all .3s;border:1px solid}
+.cta-pill-light{color:#2997ff;border-color:#2997ff}
+.cta-pill-light:hover{background:rgba(41,151,255,.1)}
+.cta-blue{background:#0071e3;color:#fff;border-color:#0071e3;border-radius:8px;font-size:17px;padding:8px 15px}
+.cta-blue:hover{background:#2481e3}
+.light{background:#f5f5f7;color:#1d1d1f}
+.light h2{font-size:40px;font-weight:600;line-height:1.1;letter-spacing:0;margin-bottom:12px}
+.light p.sub{font-size:17px;color:rgba(0,0,0,.8);line-height:1.47;letter-spacing:-.374px;max-width:600px;margin-bottom:48px}
+.dark{background:#000;color:#fff}
+.dark h2{font-size:40px;font-weight:600;line-height:1.1;margin-bottom:12px}
+.dark p.sub{font-size:17px;color:rgba(255,255,255,.7);line-height:1.47;letter-spacing:-.374px;max-width:600px;margin-bottom:48px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:980px;width:100%;margin-top:24px}
+@media(max-width:768px){.services{grid-template-columns:1fr}}
+.service-card{background:#fff;border-radius:12px;padding:40px 28px;text-align:center;box-shadow:rgba(0,0,0,.08) 0 4px 20px;transition:transform .3s}
+.service-card:hover{transform:translateY(-4px)}
+.service-icon{font-size:48px;margin-bottom:16px}
+.service-card h3{font-size:21px;font-weight:700;line-height:1.19;margin-bottom:8px;color:#1d1d1f}
+.service-card p{font-size:14px;color:rgba(0,0,0,.8);line-height:1.47;letter-spacing:-.224px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:980px;width:100%;text-align:left;margin-top:24px}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-text{font-size:17px;line-height:1.47;letter-spacing:-.374px;color:rgba(0,0,0,.8)}
+.about-text p{margin-bottom:16px}
+.contact-links{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.contact-links a{color:#0066cc;text-decoration:none;font-size:14px;letter-spacing:-.224px}
+.contact-links a:hover{text-decoration:underline}
+footer{background:#f5f5f7;padding:24px;text-align:center;font-size:12px;color:rgba(0,0,0,.48);letter-spacing:-.12px}
+.stats{display:flex;gap:48px;margin-top:32px;flex-wrap:wrap;justify-content:center}
+.stat{text-align:center}
+.stat-num{font-size:40px;font-weight:600;color:#0071e3}
+.stat-label{font-size:14px;color:rgba(0,0,0,.48);letter-spacing:-.224px;margin-top:4px}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#servicios">Servicios</a>
+<a href="#about">Sobre mí</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<section class="hero" id="inicio">
+<p class="hero-sub">Transformando vidas a través de la psicología, las finanzas y la tecnología</p>
+<h1>Alejandro Salamanca</h1>
+<p>Psicólogo clínico · Eliminación de deudas · Tecnología</p>
+<div class="cta-group">
+<a href="#servicios" class="cta-pill cta-pill-light">Conoce mis servicios →</a>
+<a href="#contacto" class="cta-blue">Contáctame</a>
+</div>
+</section>
+
+<section class="light" id="servicios">
+<h2>Mis servicios</h2>
+<p class="sub">Tres áreas para ayudarte a mejorar tu vida desde diferentes frentes</p>
+<div class="services">
+<div class="service-card">
+<div class="service-icon">🧠</div>
+<h3>PSICOVALLEY</h3>
+<p>Acompañamiento psicológico profesional presencial y online. Terapia individual, de pareja y familiar con enfoque humano.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">💰</div>
+<h3>CERO DEUDA</h3>
+<p>Eliminación de deudas, reparación de historial crediticio y educación financiera para recuperar tu libertad económica.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">💻</div>
+<h3>SISTEMAS & DISEÑO</h3>
+<p>Venta de licencias de software, diseños web profesionales y soluciones tecnológicas para tu negocio.</p>
+</div>
+</div>
+</section>
+
+<section class="dark">
+<h2>Resultados que hablan</h2>
+<p class="sub">Más de 40 clientes atendidos con resultados reales</p>
+<div class="stats">
+<div class="stat">
+<div class="stat-num">23+</div>
+<div class="stat-label" style="color:rgba(255,255,255,.48)">Consultantes</div>
+</div>
+<div class="stat">
+<div class="stat-num">21</div>
+<div class="stat-label" style="color:rgba(255,255,255,.48)">Clientes Cero Deuda</div>
+</div>
+<div class="stat">
+<div class="stat-num">🏆</div>
+<div class="stat-label" style="color:rgba(255,255,255,.48)">Casos exitosos</div>
+</div>
+</div>
+</section>
+
+<section class="light" id="about">
+<h2>Sobre mí</h2>
+<div class="about-grid">
+<div class="about-text">
+<p>Soy Alejandro Salamanca, psicólogo clínico con experiencia en terapia individual y de pareja. Mi enfoque combina la psicología tradicional con herramientas modernas para ofrecer un acompañamiento integral.</p>
+<p>Además de la práctica clínica, ayudo a personas y empresas a liberarse de deudas a través de mi programa CERO DEUDA, y ofrezco soluciones tecnológicas y de diseño para negocios que quieren crecer.</p>
+<p>Creo en el poder de la transformación personal desde todos los frentes: mente, finanzas y herramientas.</p>
+</div>
+<div class="about-text">
+<p><strong>Áreas de especialización:</strong></p>
+<p>🧠 Terapia psicológica individual y de pareja<br>
+💰 Eliminación de deudas y reparación de crédito<br>
+💻 Diseño web y licencias de software</p>
+<p style="margin-top:16px"><strong>Modalidad:</strong> Presencial en Bogotá y online</p>
+</div>
+</div>
+</section>
+
+<section class="dark" id="contacto">
+<h2>Contáctame</h2>
+<p class="sub">Estoy listo para ayudarte. Escríbeme y te responderé a la brevedad.</p>
+<div class="contact-links" style="align-items:center">
+<a href="mailto:ale.documentospersonales@gmail.com">📧 ale.documentospersonales@gmail.com</a>
+<a href="https://wa.me/573145777777" target="_blank">💬 WhatsApp: +57 314 5777777</a>
+<a href="https://t.me/alejandrosalamanca" target="_blank">✈️ Telegram</a>
+</div>
+</section>
+
+<footer>
+&copy; 2026 Alejandro Salamanca · Todos los derechos reservados
+</footer>
+
+</body>
+</html>
