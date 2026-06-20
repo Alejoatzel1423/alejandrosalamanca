@@ -11,626 +11,325 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --black:        #000000;
-            --white:        #ffffff;
-            --gray:         #909090;
-            --dark:         #1d1d1d;
-            --brand:        #6600ff;
-            --brand-dim:    rgba(102,0,255,0.08);
-            --brand-mid:    rgba(102,0,255,0.15);
-            --brand-glow:   rgba(102,0,255,0.25);
-            --ease-out:     cubic-bezier(0.23, 1, 0.32, 1);
-            --ease-in-out:  cubic-bezier(0.77, 0, 0.175, 1);
-            --font-serif:   'EB Garamond', Georgia, 'Times New Roman', serif;
-            --font-sans:    'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            --max-w:        1120px;
-            --nav-h:        72px;
-            --z-dropdown:   100;
-            --z-sticky:     200;
-            --z-modal-bg:   300;
-            --z-modal:      400;
-            --z-toast:      500;
-            --z-tooltip:    600;
-            --z-float:      900;
+        :root{
+            --black:#000;--white:#fff;--gray:#909090;--dark:#1d1d1d;
+            --brand:#6600ff;--brand-d:rgba(102,0,255,0.08);--brand-m:rgba(102,0,255,0.15);--brand-g:rgba(102,0,255,0.25);
+            --ease-out:cubic-bezier(0.23,1,0.32,1);
+            --serif:'EB Garamond',Georgia,serif;--sans:'Plus Jakarta Sans',system-ui,sans-serif;
+            --max-w:1120px;--nav-h:64px;
+            --z-drop:100;--z-sticky:200;--z-modal:400;--z-toast:500;--z-float:900
         }
-
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
-
-        body{
-            font-family:var(--font-sans);
-            -webkit-font-smoothing:antialiased;
-            background:var(--black);
-            color:var(--white);
-            line-height:1.6;
-            overflow-x:hidden;
-            -webkit-tap-highlight-color:transparent
-        }
-
+        body{font-family:var(--sans);-webkit-font-smoothing:antialiased;background:var(--black);color:var(--white);line-height:1.6;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
         ::selection{background:var(--brand);color:#fff}
-        a{color:inherit;text-decoration:none}
-        ul{list-style:none}
-        button{border:none;background:none;cursor:pointer;font-family:inherit}
+        a{color:inherit;text-decoration:none}ul{list-style:none}button{border:none;background:none;cursor:pointer;font-family:inherit}
+        img{max-width:100%;height:auto;display:block}
         .container{max-width:var(--max-w);margin:0 auto;padding:0 28px}
-
         :focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
 
-        /* === NAV === */
+        @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+
+        /* == HEADER ULTRA MINIMALISTA == */
         .header{
-            position:fixed;top:0;left:0;right:0;z-index:var(--z-sticky);
-            height:var(--nav-h);
-            transition:background 0.25s var(--ease-out),backdrop-filter 0.25s var(--ease-out)
+            position:fixed;top:0;left:0;right:0;z-index:var(--z-sticky);height:var(--nav-h);
+            transition:background 0.25s var(--ease-out)
         }
-        .header.scrolled{
-            background:rgba(0,0,0,0.88);
-            backdrop-filter:blur(28px) saturate(180%);
-            -webkit-backdrop-filter:blur(28px) saturate(180%);
-            border-bottom:1px solid rgba(255,255,255,0.04)
-        }
-        .nav{
-            max-width:var(--max-w);margin:0 auto;padding:0 28px;
-            height:var(--nav-h);
-            display:flex;align-items:center;justify-content:space-between
-        }
-        .nav-logo{
-            font-family:var(--font-serif);
-            font-size:20px;font-weight:600;letter-spacing:-0.3px;
-            color:var(--white)
-        }
+        .header.scrolled{background:rgba(0,0,0,0.88);backdrop-filter:blur(28px);border-bottom:1px solid rgba(255,255,255,0.04)}
+        .nav{max-width:var(--max-w);margin:0 auto;padding:0 28px;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between}
+        .nav-logo{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--white)}
         .nav-logo span{color:var(--brand)}
-        .nav-links{display:flex;align-items:center}
-        .nav-links a{
-            color:var(--gray);font-size:13px;font-weight:500;letter-spacing:0.2px;
-            padding:8px 18px;border-radius:9999px;
-            transition:color 0.2s var(--ease-out),background 0.2s var(--ease-out)
-        }
-        .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}
         .nav-cta{
-            background:var(--brand)!important;color:var(--white)!important;
-            font-weight:600!important;padding:10px 24px!important;margin-left:6px
+            font-family:var(--sans);font-size:13px;font-weight:600;padding:10px 24px;
+            border-radius:9999px;background:var(--brand);color:var(--white);
+            transition:transform 0.2s var(--ease-out),box-shadow 0.2s var(--ease-out)
         }
+        .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--brand-g)}
         .nav-cta:active{transform:scale(0.97)}
 
-        .hamburger{
-            display:none;flex-direction:column;gap:5px;cursor:pointer;
-            padding:8px;background:none;border:none
-        }
-        .hamburger span{
-            width:24px;height:2px;background:var(--white);
-            border-radius:2px;transition:transform 0.2s var(--ease-out),opacity 0.2s var(--ease-out);display:block
-        }
-        .hamburger.active span:nth-child(1){transform:rotate(45deg)translate(5px,5px)}
-        .hamburger.active span:nth-child(2){opacity:0}
-        .hamburger.active span:nth-child(3){transform:rotate(-45deg)translate(5px,-5px)}
-
-        /* === REVEAL === */
-        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.5s var(--ease-out),transform 0.5s var(--ease-out)}
-        .reveal.visible{opacity:1;transform:translateY(0)}
-        .rd1{transition-delay:0.1s}.rd2{transition-delay:0.2s}.rd3{transition-delay:0.3s}.rd4{transition-delay:0.4s}
-
-        @media(prefers-reduced-motion:reduce){
-            .reveal{opacity:1;transform:none;transition:none}
-            *{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
-            .badge-dot,.spin-slow{animation:none!important}
-        }
-
-        /* === HERO === */
-        .hero{
-            min-height:100vh;
-            display:flex;align-items:center;justify-content:center;
-            padding:calc(var(--nav-h)+40px)28px 100px;
-            position:relative;overflow:hidden
-        }
-        .hero-glow{
-            position:absolute;border-radius:50%;filter:blur(160px);pointer-events:none
-        }
-        .hero-glow--1{width:600px;height:600px;background:var(--brand);top:-20%;left:-15%;opacity:0.1}
-        .hero-glow--2{width:400px;height:400px;background:var(--brand);bottom:-20%;right:-10%;opacity:0.06}
-
-        .hero .container{position:relative;z-index:2;text-align:center;max-width:860px}
-
-        .hero h1{
-            font-family:var(--font-serif);
-            font-size:clamp(44px,8vw,88px);
-            font-weight:600;line-height:1.00;
-            letter-spacing:-0.03em;
-            margin-bottom:14px;max-width:800px;margin-left:auto;margin-right:auto
-        }
-        .hero h1 .line{display:block}
-        .hero h1 .brand{color:var(--brand)}
-
-        .hero-sub{
-            font-size:clamp(16px,2vw,21px);
-            font-weight:300;letter-spacing:-0.2px;
-            color:rgba(255,255,255,0.55);
-            max-width:560px;margin:0 auto 12px;line-height:1.35
-        }
-        .hero-txt{
-            font-size:15px;line-height:1.7;font-weight:300;
-            color:var(--gray);max-width:520px;margin:0 auto 44px
-        }
-
-        .hero-stats{
-            display:flex;justify-content:center;gap:10px;
-            flex-wrap:wrap;margin-bottom:44px
-        }
-        .hero-stat{
-            padding:14px 22px;min-width:160px;
-            border-radius:14px;background:var(--dark);
-            border:1px solid rgba(255,255,255,0.04);
-            text-align:center;position:relative;overflow:hidden;
-            transition:transform 0.2s var(--ease-out),border-color 0.2s var(--ease-out)
-        }
-        .hero-stat::before{
-            content:'';position:absolute;inset:0;
-            background:linear-gradient(135deg,var(--brand-dim),transparent);
-            opacity:0;transition:opacity 0.3s var(--ease-out)
-        }
-        .hero-stat:hover::before{opacity:1}
-        .hero-stat:hover{border-color:var(--brand-mid);transform:translateY(-2px)}
-        .hero-stat:active{transform:scale(0.97)}
-        .hero-stat .num{font-size:22px;font-weight:700;color:var(--brand);position:relative;z-index:1}
-        .hero-stat .lab{font-size:11px;color:var(--gray);font-weight:500;letter-spacing:0.2px;line-height:1.3;margin-top:1px;position:relative;z-index:1}
-
-        .hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+        /* == HERO DOS COLUMNAS == */
+        .hero{min-height:100vh;display:flex;align-items:center;padding:calc(var(--nav-h)+40px)28px 80px;position:relative;overflow:hidden}
+        .hero-g1{position:absolute;width:500px;height:500px;border-radius:50%;filter:blur(150px);background:var(--brand);top:-20%;left:-15%;opacity:0.08;pointer-events:none}
+        .hero-g2{position:absolute;width:350px;height:350px;border-radius:50%;filter:blur(120px);background:var(--brand);bottom:-15%;right:-10%;opacity:0.05;pointer-events:none}
+        .hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+        @media(max-width:768px){.hero .container{grid-template-columns:1fr;gap:32px;text-align:center}}
+        .hero h1{font-family:var(--serif);font-size:clamp(36px,5vw,64px);font-weight:600;line-height:1.02;letter-spacing:-0.03em;margin-bottom:14px}
+        .hero h1 .hl{color:var(--brand)}
+        .hero p{font-size:clamp(14px,1.4vw,16px);line-height:1.7;font-weight:300;color:var(--gray);margin-bottom:28px;max-width:480px}
+        @media(max-width:768px){.hero p{margin:0 auto 28px}}
+        .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+        @media(max-width:768px){.hero-actions{justify-content:center}}
 
         .btn{
-            display:inline-flex;align-items:center;gap:10px;
-            padding:15px 30px 15px 34px;border-radius:9999px;
-            font-family:var(--font-sans);font-size:15px;font-weight:600;
-            border:none;cursor:pointer;letter-spacing:-0.1px;
+            display:inline-flex;align-items:center;gap:8px;
+            padding:14px 28px 14px 32px;border-radius:9999px;
+            font-family:var(--sans);font-size:14px;font-weight:600;
             transition:transform 0.2s var(--ease-out),box-shadow 0.2s var(--ease-out),background 0.2s var(--ease-out),border-color 0.2s var(--ease-out);
-            text-decoration:none;-webkit-tap-highlight-color:transparent
+            cursor:pointer;border:none;text-decoration:none;-webkit-tap-highlight-color:transparent
         }
         .btn:active{transform:scale(0.97)}
-        .btn-icon{
-            width:30px;height:30px;border-radius:50%;
+        .btn-i{
+            width:28px;height:28px;border-radius:50%;
             display:inline-flex;align-items:center;justify-content:center;
             transition:transform 0.2s var(--ease-out)
         }
-        .btn-primary{background:var(--brand);color:var(--white);box-shadow:0 4px 24px var(--brand-glow)}
-        .btn-primary .btn-icon{background:rgba(255,255,255,0.12)}
-        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 36px var(--brand-glow)}
-        .btn-primary:hover .btn-icon{transform:translateX(2px)scale(1.05)}
+        .btn-pri{background:var(--brand);color:var(--white);box-shadow:0 4px 20px var(--brand-g)}
+        .btn-pri .btn-i{background:rgba(255,255,255,0.12)}
+        .btn-pri:hover{transform:translateY(-2px);box-shadow:0 8px 32px var(--brand-g)}
+        .btn-pri:hover .btn-i{transform:translateX(2px)scale(1.05)}
+        .btn-sec{background:transparent;color:rgba(255,255,255,0.6);border:1.5px solid rgba(255,255,255,0.08)}
+        .btn-sec:hover{border-color:rgba(255,255,255,0.18);background:rgba(255,255,255,0.04);transform:translateY(-2px)}
 
-        .btn-ghost{background:transparent;color:rgba(255,255,255,0.6);border:1.5px solid rgba(255,255,255,0.08)}
-        .btn-ghost:hover{border-color:rgba(255,255,255,0.18);background:rgba(255,255,255,0.04);transform:translateY(-2px)}
+        .hero-img{
+            width:100%;aspect-ratio:4/3;border-radius:20px;overflow:hidden;
+            background:var(--dark);display:flex;align-items:center;justify-content:center;
+            border:1px solid rgba(255,255,255,0.04)
+        }
+        .hero-img img{width:100%;height:100%;object-fit:cover}
+        .hero-img .ph{
+            display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--gray)
+        }
+        .hero-img .ph svg{width:40px;height:40px;opacity:0.3}
+        .hero-img .ph span{font-size:12px;opacity:0.5}
 
-        /* === SECTIONS === */
-        section{padding:120px 28px}
-        .s-title{
-            font-family:var(--font-serif);
-            font-size:clamp(30px,4vw,48px);
-            font-weight:600;letter-spacing:-0.03em;
-            line-height:1.06;margin-bottom:14px;
-            text-wrap:balance
-        }
-        .s-desc{
-            font-size:16px;line-height:1.7;font-weight:300;
-            color:var(--gray);max-width:460px;margin-bottom:48px
-        }
-        .sec-line{
-            width:50px;height:2px;background:var(--brand);
-            margin-bottom:20px;border-radius:2px
-        }
+        /* == REVEAL == */
+        .re{opacity:0;transform:translateY(24px);transition:opacity 0.5s var(--ease-out),transform 0.5s var(--ease-out)}
+        .re.vi{opacity:1;transform:translateY(0)}
+        .d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
 
-        /* === IMAGE PLACEHOLDER === */
-        .img-placeholder{
-            width:100%;aspect-ratio:4/3;border-radius:16px;
-            display:flex;flex-direction:column;align-items:center;justify-content:center;
-            gap:10px;position:relative;overflow:hidden;
-            border:1px dashed rgba(255,255,255,0.08)
-        }
-        .img-placeholder svg{width:36px;height:36px;opacity:0.3}
-        .img-placeholder .hint{
-            font-size:11px;color:var(--gray);font-weight:400;letter-spacing:0.5px;
-            text-align:center;opacity:0.6
-        }
-        .img-placeholder .tag{
-            position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
-            font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
-            padding:3px 10px;border-radius:9999px;
-            background:var(--dark);color:var(--gray);opacity:0.7
-        }
-        .img-legal{background:linear-gradient(135deg,rgba(102,0,255,0.08),rgba(102,0,255,0.02))}
-        .img-psych{background:linear-gradient(135deg,rgba(102,0,255,0.06),rgba(102,0,255,0.01))}
-        .img-about{background:linear-gradient(135deg,var(--dark),var(--black))}
+        /* == CONFIANZA == */
+        .trust{text-align:center;padding:60px 28px;border-top:1px solid rgba(255,255,255,0.04)}
+        .trust p{font-size:13px;color:var(--gray);font-weight:400;letter-spacing:0.5px;margin-bottom:24px}
+        .trust-logos{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:center}
+        .trust-logos span{font-size:14px;font-weight:600;color:rgba(255,255,255,0.15);letter-spacing:1px}
 
-        /* === METHODOLOGY === */
-        .methodology{background:var(--black)}
-        .steps{
-            display:grid;grid-template-columns:repeat(3,1fr);gap:14px
-        }
-        @media(max-width:768px){.steps{grid-template-columns:1fr}}
-
-        .step{
-            padding:34px 26px;border-radius:14px;
+        /* == SERVICES GRID == */
+        .services{padding:100px 28px}
+        .s-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,42px);font-weight:600;letter-spacing:-0.03em;line-height:1.06;margin-bottom:10px;text-wrap:balance}
+        .s-desc{font-size:15px;line-height:1.7;font-weight:300;color:var(--gray);max-width:440px;margin-bottom:44px}
+        .grid-6{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+        @media(max-width:768px){.grid-6{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:480px){.grid-6{grid-template-columns:1fr}}
+        .card{
+            padding:30px 24px;border-radius:14px;
             background:var(--dark);border:1px solid rgba(255,255,255,0.04);
             transition:transform 0.3s var(--ease-out),border-color 0.3s var(--ease-out)
         }
-        .step:active{transform:scale(0.98)}
-        .step:hover{border-color:var(--brand-mid);transform:translateY(-4px)}
-        .step .n{font-family:var(--font-serif);font-size:40px;font-weight:600;line-height:0.8;color:var(--brand);margin-bottom:12px}
-        .step h3{font-size:17px;font-weight:600;margin-bottom:6px;letter-spacing:-0.2px}
-        .step p{font-size:13px;color:var(--gray);line-height:1.6;font-weight:300}
+        .card:active{transform:scale(0.98)}
+        .card:hover{border-color:var(--brand-m);transform:translateY(-3px)}
+        .card svg{width:28px;height:28px;stroke:var(--brand);stroke-width:1.5;fill:none;margin-bottom:14px}
+        .card h3{font-size:16px;font-weight:600;margin-bottom:4px}
+        .card p{font-size:13px;color:var(--gray);line-height:1.5;font-weight:300}
 
-        /* === COUNTERS === */
-        .counters{text-align:center;border-top:1px solid rgba(255,255,255,0.04)}
-        .counter-grid{
-            display:grid;grid-template-columns:repeat(4,1fr);gap:28px;
-            max-width:820px;margin:0 auto
+        /* == CTA FINAL == */
+        .cta-final{
+            padding:100px 28px;text-align:center;
+            background:linear-gradient(135deg,#0a0a12,var(--brand-d),#0a0a12);
+            position:relative;overflow:hidden
         }
-        @media(max-width:640px){.counter-grid{grid-template-columns:repeat(2,1fr);gap:20px}}
-        .c-item{text-align:center}
-        .c-num{
-            font-family:var(--font-serif);
-            font-size:clamp(44px,6vw,68px);font-weight:600;line-height:1;
-            letter-spacing:-0.04em;color:var(--brand);margin-bottom:4px
+        .cta-final::before{
+            content:'';position:absolute;inset:0;
+            background:radial-gradient(ellipse at 50% 50%, rgba(102,0,255,0.06), transparent 70%);
+            pointer-events:none
         }
-        .c-lab{font-size:13px;color:var(--gray);font-weight:400;letter-spacing:0.1px}
+        .cta-final .container{position:relative;z-index:2;max-width:600px}
+        .cta-final h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,40px);font-weight:600;letter-spacing:-0.03em;line-height:1.06;margin-bottom:12px}
+        .cta-final p{font-size:15px;line-height:1.7;font-weight:300;color:var(--gray);margin-bottom:32px}
+        .cta-final .btn-pri{font-size:15px;padding:16px 36px 16px 40px}
+        .cta-final .btn-pri .btn-i{width:30px;height:30px}
 
-        /* === SERVICES === */
-        .services-section{overflow:hidden}
-        .s-block{padding:110px 28px}
-        .s-block .g{
-            display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center
-        }
-        @media(max-width:768px){.s-block .g{grid-template-columns:1fr;gap:32px}}
+        /* == COUNTERS == */
+        .counters{padding:80px 28px;text-align:center}
+        .c-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:800px;margin:0 auto}
+        @media(max-width:640px){.c-grid{grid-template-columns:repeat(2,1fr)}}
+        .c-num{font-family:var(--serif);font-size:clamp(40px,5vw,60px);font-weight:600;line-height:1;letter-spacing:-0.04em;color:var(--brand);margin-bottom:4px}
+        .c-lab{font-size:13px;color:var(--gray);font-weight:400}
 
-        .s-block h3{
-            font-family:var(--font-serif);
-            font-size:clamp(21px,2.6vw,32px);font-weight:600;line-height:1.1;
-            letter-spacing:-0.025em;margin-bottom:14px
-        }
-        .s-block p{font-size:15px;line-height:1.8;margin-bottom:22px;font-weight:300}
-
-        .bl-legal{background:#0a0a12}
-        .bl-legal h3{color:var(--white)}
-        .bl-legal p{color:rgba(255,255,255,0.42)}
-        .bl-psych{background:var(--black)}
-        .bl-psych h3{color:var(--white)}
-        .bl-psych p{color:rgba(255,255,255,0.42)}
-
-        .btn-outline{
-            display:inline-flex;align-items:center;gap:8px;
-            padding:12px 24px 12px 28px;border-radius:9999px;
-            font-family:var(--font-sans);font-size:13px;font-weight:600;
-            transition:transform 0.2s var(--ease-out),background 0.2s var(--ease-out),border-color 0.2s var(--ease-out);
-            background:transparent;color:var(--brand);border:1.5px solid var(--brand-mid);
-            text-decoration:none
-        }
-        .btn-outline:active{transform:scale(0.97)}
-        .btn-outline .btn-icon{
-            width:26px;height:26px;border-radius:50%;
-            background:var(--brand-dim);display:inline-flex;align-items:center;justify-content:center;
-            transition:transform 0.2s var(--ease-out)
-        }
-        .btn-outline:hover{background:var(--brand-dim);transform:translateY(-2px)}
-        .btn-outline:hover .btn-icon{transform:translateX(2px)scale(1.05)}
-
-        /* === ABOUT === */
-        .about{
-            text-align:center;border-top:1px solid rgba(255,255,255,0.04)
-        }
-        .about .g{
-            display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;text-align:left;
-            margin-top:40px
-        }
-        @media(max-width:768px){.about .g{grid-template-columns:1fr;gap:28px}}
-        .about .hl{color:var(--brand);font-weight:500}
-        .about p{font-size:16px;line-height:1.75;color:rgba(255,255,255,0.55);font-weight:300}
-
-        /* === CONTACT === */
-        .contact{
-            text-align:center;padding:120px 28px 100px;background:var(--dark)
-        }
-        .contact .container{max-width:520px}
-        .contact .s-desc{color:var(--gray);margin:0 auto 32px;text-align:center}
-
-        .btn-wa{
-            display:inline-flex;align-items:center;gap:12px;
-            padding:17px 38px 17px 42px;border-radius:9999px;
-            font-family:var(--font-sans);font-size:16px;font-weight:600;
-            border:none;cursor:pointer;text-decoration:none;
-            transition:transform 0.2s var(--ease-out),box-shadow 0.2s var(--ease-out);
-            background:var(--brand);color:var(--white);
-            box-shadow:0 4px 24px var(--brand-glow)
-        }
-        .btn-wa:active{transform:scale(0.97)}
-        .btn-wa .btn-icon{
-            width:30px;height:30px;border-radius:50%;
-            background:rgba(255,255,255,0.12);
-            display:inline-flex;align-items:center;justify-content:center;
-            transition:transform 0.2s var(--ease-out)
-        }
-        .btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 36px var(--brand-glow)}
-        .btn-wa:hover .btn-icon{transform:translateX(2px)scale(1.05)}
-
-        /* === FOOTER === */
+        /* == FOOTER 4 COLUMNAS == */
         footer{
-            padding:36px 28px;text-align:center;
-            font-size:13px;color:rgba(255,255,255,0.12);
-            border-top:1px solid rgba(255,255,255,0.03)
+            padding:60px 28px 36px;
+            border-top:1px solid rgba(255,255,255,0.04);font-size:13px
         }
-        footer a{color:rgba(255,255,255,0.22);transition:color 0.3s}
-        footer a:hover{color:var(--brand)}
-
-        /* === WA FLOAT === */
-        .wa-float{
-            position:fixed;bottom:24px;right:24px;z-index:var(--z-float);
-            width:54px;height:54px;border-radius:50%;
-            background:var(--brand);
-            display:flex;align-items:center;justify-content:center;
-            text-decoration:none;
-            box-shadow:0 4px 20px var(--brand-glow);
-            transition:transform 0.2s var(--ease-out),box-shadow 0.2s var(--ease-out);border:none;
-            -webkit-tap-highlight-color:transparent
+        .f-grid{
+            display:grid;grid-template-columns:repeat(4,1fr);gap:28px;max-width:var(--max-w);margin:0 auto 36px
         }
-        .wa-float:hover{transform:scale(1.08);box-shadow:0 6px 28px var(--brand-glow)}
-        .wa-float:active{transform:scale(0.92)}
-        .wa-float svg{width:22px;height:22px;fill:var(--white)}
-
-        /* === RESPONSIVE === */
-        @media(max-width:768px){
-            .nav-links{
-                display:none;position:fixed;top:var(--nav-h);left:0;right:0;
-                background:rgba(0,0,0,0.98);backdrop-filter:blur(20px);
-                flex-direction:column;padding:16px;gap:4px;
-                border-bottom:1px solid rgba(255,255,255,0.04)
-            }
-            .nav-links.open{display:flex}
-            .nav-links a{padding:12px 16px}
-            .nav-cta{margin-left:0;text-align:center}
-            .hamburger{display:flex}
-            section{padding:80px 20px}
-            .hero h1{font-size:38px}
-            .hero-stat{min-width:130px;padding:12px 16px}
-            .step{padding:26px 22px}
-            .btn{width:100%;justify-content:center}
-            .wa-float{bottom:18px;right:18px;width:48px;height:48px}
-            .wa-float svg{width:18px;height:18px}
-            .about .g{text-align:center}
-        }
+        @media(max-width:768px){.f-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:480px){.f-grid{grid-template-columns:1fr}}
+        .f-col h4{font-weight:600;margin-bottom:10px;color:var(--white);font-size:13px}
+        .f-col a{display:block;color:var(--gray);padding:3px 0;transition:color 0.2s;font-size:12px}
+        .f-col a:hover{color:var(--brand)}
+        .f-soc{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,0.04)}
+        .f-soc p{color:rgba(255,255,255,0.12);font-size:12px}
     </style>
 </head>
 <body>
 
+<!-- HEADER ultra minimalista -->
 <header class="header" id="header">
     <nav class="nav">
         <a href="#hero" class="nav-logo">Alejandro <span>Salamanca</span></a>
-        <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" id="navLinks" role="navigation">
-            <a href="#servicios">Servicios</a>
-            <a href="#about">Perfil</a>
-            <a href="#contacto" class="nav-cta">Agendar</a>
-        </div>
+        <a href="#contacto" class="nav-cta">Comenzar</a>
     </nav>
 </header>
 
-<!-- HERO -->
+<!-- HERO dos columnas -->
 <section class="hero" id="hero">
-    <div class="hero-glow hero-glow--1"></div>
-    <div class="hero-glow hero-glow--2"></div>
-
+    <div class="hero-g1"></div>
+    <div class="hero-g2"></div>
     <div class="container">
-        <h1>
-            <span class="line">Alejandro</span>
-            <span class="line brand">Salamanca</span>
-        </h1>
-
-        <p class="hero-sub reveal">
-            Consultoría Psicológica Integral y Gestión de Soluciones Financieras
-        </p>
-
-        <p class="hero-txt reveal rd1">
-            Transformo crisis en estabilidad. Un enfoque interdisciplinario que une el Psychological Counseling con la asesoría estratégica para recuperar tu tranquilidad económica y tu libertad crediticia.
-        </p>
-
-        <div class="hero-stats reveal rd2">
-            <div class="hero-stat">
-                <div class="num" data-target="8">0</div>
-                <div class="lab">Años de<br>Experiencia</div>
-            </div>
-            <div class="hero-stat">
-                <div class="num" style="font-size:20px;">⚖️</div>
-                <div class="lab">Especialista en<br>Ley de Insolvencia</div>
-            </div>
-            <div class="hero-stat">
-                <div class="num" style="font-size:20px;">🧠</div>
-                <div class="lab">Enfoque Integral<br>Derecho de Consumo y Psicología</div>
+        <div class="re vi">
+            <h1>Consultoría Psicológica y<br><span class="hl">Gestión Financiera</span></h1>
+            <p>Transformo crisis en estabilidad. Un enfoque interdisciplinario que une el Psychological Counseling con la asesoría estratégica para recuperar tu tranquilidad económica y tu libertad crediticia.</p>
+            <div class="hero-actions">
+                <a href="#contacto" class="btn btn-pri">
+                    Comenzar
+                    <span class="btn-i"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </a>
+                <a href="#servicios" class="btn btn-sec">Saber más</a>
             </div>
         </div>
-
-        <div class="hero-actions reveal rd3">
-            <a href="#contacto" class="btn btn-primary">
-                Recuperar mi Tranquilidad
-                <span class="btn-icon">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </span>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- METHODOLOGY -->
-<section class="methodology" id="metodologia">
-    <div class="container">
-        <div class="sec-line reveal"></div>
-        <h2 class="s-title reveal rd1">Un proceso claro hacia tu bienestar</h2>
-        <p class="s-desc reveal rd2">Tres pasos para transformar tu situación desde la raíz.</p>
-
-        <div class="steps">
-            <div class="step reveal rd1">
-                <div class="n">01</div>
-                <h3>Diagnóstico Integral</h3>
-                <p>Evaluamos tu reporte financiero o estado emocional.</p>
-            </div>
-            <div class="step reveal rd2">
-                <div class="n">02</div>
-                <h3>Estrategia Personalizada</h3>
-                <p>Aplicamos Habeas Data o Counseling según el caso.</p>
-            </div>
-            <div class="step reveal rd3">
-                <div class="n">03</div>
-                <h3>Ejecución y Resultados</h3>
-                <p>Recuperas tu acceso al crédito y tu equilibrio mental.</p>
+        <div class="re d1">
+            <div class="hero-img">
+                <img src="images/alejandro.jpg" alt="Alejandro Salamanca">
             </div>
         </div>
     </div>
 </section>
 
-<!-- COUNTERS -->
+<!-- CONFIANZA -->
+<section class="trust re">
+    <p>Con la confianza de clientes en toda Colombia</p>
+    <div class="trust-logos">
+        <span>23+ Consultas</span>
+        <span>21 Casos</span>
+        <span>8+ Años</span>
+        <span>100% Confidencial</span>
+    </div>
+</section>
+
+<!-- SERVICIOS grid 6 -->
+<section class="services" id="servicios">
+    <div class="container">
+        <h2 class="s-title re">Mis servicios</h2>
+        <p class="s-desc re d1">Tres áreas para ayudarte a recuperar el control de tu vida.</p>
+        <div class="grid-6">
+            <div class="card re d1">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <h3>Consultas Psicológicas</h3>
+                <p>Atención profesional individual, de pareja y familiar. Presencial y online.</p>
+            </div>
+            <div class="card re d2">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12V12h7V5l-7-4z"/></svg>
+                <h3>Datacrédito &amp; Cifin</h3>
+                <p>Eliminación legal de castigos y reportes negativos con Habeas Data.</p>
+            </div>
+            <div class="card re d3">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <h3>Licencias Office</h3>
+                <p>Venta de licencias originales Microsoft Office para hogar y empresa.</p>
+            </div>
+            <div class="card re d1">
+                <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <h3>Mantenimiento PC</h3>
+                <p>Formateo, limpieza, optimización y puesta a punto de equipos.</p>
+            </div>
+            <div class="card re d2">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                <h3>Insolvencia</h3>
+                <p>Asesoría en Ley de Insolvencia de Persona Natural.</p>
+            </div>
+            <div class="card re d3">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                <h3>Counseling</h3>
+                <p>Psychological Counseling para crisis, estrés y sobreendeudamiento.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CIFRAS -->
 <section class="counters">
     <div class="container">
-        <h2 class="s-title reveal" style="margin-bottom:48px;">Cifras</h2>
-
-        <div class="counter-grid">
-            <div class="c-item reveal rd1">
+        <div class="c-grid">
+            <div class="re d1">
                 <div class="c-num"><span class="counter" data-target="23">0</span>+</div>
-                <p class="c-lab">Consultas Psicológicas</p>
+                <p class="c-lab">Consultas</p>
             </div>
-            <div class="c-item reveal rd2">
+            <div class="re d2">
                 <div class="c-num"><span class="counter" data-target="21">0</span></div>
                 <p class="c-lab">Datacrédito &amp; Cifin</p>
             </div>
-            <div class="c-item reveal rd3">
+            <div class="re d3">
                 <div class="c-num"><span class="counter" data-target="8">0</span>+</div>
-                <p class="c-lab">Años de Experiencia</p>
+                <p class="c-lab">Años</p>
             </div>
-            <div class="c-item reveal rd4">
+            <div class="re d4">
                 <div class="c-num">100%</div>
-                <p class="c-lab">Confidencialidad</p>
+                <p class="c-lab">Confidencial</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services-section" id="servicios">
-
-    <div class="s-block bl-legal">
-        <div class="container g">
-            <div class="content reveal">
-                <h3>Eliminación de Castigos en Datacrédito y Cifin</h3>
-                <p>Un reporte negativo no tiene por qué ser permanente. Me especializo en la aplicación estratégica del Habeas Data para la eliminación legal de reportes negativos, indebidos o caducados en Datacrédito y Cifin. Te asesoro en la defensa de tus derechos como consumidor financiero.</p>
-                <a href="https://wa.me/573145777777" target="_blank" class="btn-outline">
-                    Limpiar mi Historial
-                    <span class="btn-icon">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </span>
-                </a>
-            </div>
-            <div class="reveal rd2">
-                <div class="img-placeholder img-legal">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="1" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                    <span class="hint">🧑‍⚖️ Foto profesional<br>consultoría legal</span>
-                    <span class="tag">📸 Pon tu foto aquí</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="s-block bl-psych">
-        <div class="container g">
-            <div class="reveal">
-                <div class="img-placeholder img-psych">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="1" opacity="0.3"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span class="hint">🧠 Sesión de counseling<br>espacio profesional</span>
-                    <span class="tag">📸 Pon tu foto aquí</span>
-                </div>
-            </div>
-            <div class="content reveal rd2">
-                <h3>Consultoría Psicológica</h3>
-                <p>Acompañamiento profesional desde el enfoque de Psychological Counseling. Un espacio confidencial para brindarte herramientas frente a las crisis de la vida diaria, el manejo del estrés y el impacto emocional del sobreendeudamiento.</p>
-                <a href="https://wa.me/573145777777" target="_blank" class="btn-outline">
-                    Cuidar mi Salud Mental
-                    <span class="btn-icon">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about">
+<!-- CTA FINAL -->
+<section class="cta-final" id="contacto">
     <div class="container">
-        <div class="sec-line reveal" style="margin:0 auto 20px"></div>
-        <h2 class="s-title reveal rd1">Mi Perfil Profesional</h2>
-
-        <div class="g">
-            <div class="reveal rd2">
-                <div class="img-placeholder img-about" style="aspect-ratio:3/4;border:none;padding:0;overflow:hidden;">
-                    <img src="images/alejandro.jpg" alt="Alejandro Salamanca — Psicólogo Profesional" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">
-                </div>
-            </div>
-            <div class="reveal rd3" style="text-align:left;">
-                <p>Soy <span class="hl">Psicólogo Profesional</span> y consultor especializado en la restauración del historial crediticio. Mi enfoque entiende que las crisis financieras impactan directamente la salud mental.</p>
-                <p style="margin-top:16px;">Por eso, unifico ambas disciplinas para ofrecerte soluciones que no solo restauran tu perfil comercial, sino que también te devuelven la <span class="hl">tranquilidad emocional</span>.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contacto">
-    <div class="container">
-        <h2 class="s-title reveal" style="color:var(--white);">Da el primer paso hoy</h2>
-        <p class="s-desc reveal rd1">Agenda una consultoría personalizada para evaluar tu caso con total confidencialidad.</p>
-        <div class="reveal rd2">
-            <a href="https://wa.me/573145777777" target="_blank" class="btn-wa">
-                Agendar por WhatsApp
-                <span class="btn-icon">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </span>
+        <h2 class="re">¿Listo para recuperar tu tranquilidad?</h2>
+        <p class="re d1">Agenda una consultoría personalizada para evaluar tu caso con total confidencialidad.</p>
+        <div class="re d2">
+            <a href="https://wa.me/573145777777" target="_blank" class="btn btn-pri">
+                Comenzar ahora
+                <span class="btn-i"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
             </a>
         </div>
     </div>
 </section>
 
+<!-- FOOTER 4 columnas -->
 <footer>
-    <p>© 2026 Alejandro Salamanca. Bogotá, Colombia.</p>
+    <div class="f-grid">
+        <div class="f-col">
+            <h4>Servicios</h4>
+            <a href="#servicios">Consultas Psicológicas</a>
+            <a href="#servicios">Datacrédito &amp; Cifin</a>
+            <a href="#servicios">Licencias Office</a>
+            <a href="#servicios">Mantenimiento PC</a>
+        </div>
+        <div class="f-col">
+            <h4>Perfil</h4>
+            <a href="#hero">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <div class="f-col">
+            <h4>Contacto</h4>
+            <a href="https://wa.me/573145777777">WhatsApp</a>
+            <a href="mailto:ale.documentospersonales@gmail.com">Email</a>
+        </div>
+        <div class="f-col">
+            <h4>Legal</h4>
+            <a href="#">Privacidad</a>
+            <a href="#">Términos</a>
+        </div>
+    </div>
+    <div class="f-soc">
+        <p>© 2026 Alejandro Salamanca · Bogotá, Colombia</p>
+    </div>
 </footer>
-
-<a href="https://wa.me/573145777777" target="_blank" class="wa-float" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
 
 <script>
     (function(){
         'use strict';
+        var h=document.getElementById('header');
+        window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.pageYOffset>60);},{passive:true});
 
-        var h=document.getElementById('hamburger'),n=document.getElementById('navLinks');
-        h.addEventListener('click',function(){
-            n.classList.toggle('open');h.classList.toggle('active');
-            h.setAttribute('aria-expanded',n.classList.contains('open'));
-        });
-        n.querySelectorAll('a').forEach(function(l){
-            l.addEventListener('click',function(){
-                n.classList.remove('open');h.classList.remove('active');
-                h.setAttribute('aria-expanded','false');
-            });
-        });
-
-        var header=document.getElementById('header');
-        window.addEventListener('scroll',function(){
-            header.classList.toggle('scrolled',window.pageYOffset>60);
-        },{passive:true});
-
-        var els=document.querySelectorAll('.reveal');
+        var els=document.querySelectorAll('.re');
         if('IntersectionObserver'in window){
             var obs=new IntersectionObserver(function(entries){
-                entries.forEach(function(e){
-                    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
-                });
-            },{threshold:0.08,rootMargin:'0px 0px -60px 0px'});
+                entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vi');obs.unobserve(e.target);}});
+            },{threshold:0.08,rootMargin:'0px 0px -50px 0px'});
             els.forEach(function(el){obs.observe(el);});
-        }else{els.forEach(function(el){el.classList.add('visible');});}
+        }else{els.forEach(function(el){el.classList.add('vi');});}
 
         var counters=document.querySelectorAll('.counter');
         var coObs=new IntersectionObserver(function(entries){
@@ -638,38 +337,15 @@
                 if(e.isIntersecting){
                     var el=e.target,target=parseInt(el.getAttribute('data-target'),10);
                     if(isNaN(target))return;
-                    var cur=0,inc=Math.ceil(target/40);
+                    var cur=0,inc=Math.ceil(target/35);
                     var timer=setInterval(function(){
-                        cur+=inc;
-                        if(cur>=target){el.textContent=target;clearInterval(timer);}
-                        else{el.textContent=cur;}
+                        cur+=inc;if(cur>=target){el.textContent=target;clearInterval(timer);}else{el.textContent=cur;}
                     },30);
                     coObs.unobserve(el);
                 }
             });
         },{threshold:0.5});
         counters.forEach(function(c){coObs.observe(c);});
-
-        var heroNum=document.querySelector('.hero-stat .num[data-target]');
-        if(heroNum){
-            var hObs=new IntersectionObserver(function(entries){
-                entries.forEach(function(e){
-                    if(e.isIntersecting){
-                        var target=parseInt(heroNum.getAttribute('data-target'),10);
-                        if(!isNaN(target)){
-                            var cur=0,inc=Math.ceil(target/35);
-                            var timer=setInterval(function(){
-                                cur+=inc;
-                                if(cur>=target){heroNum.textContent='+'+target;clearInterval(timer);}
-                                else{heroNum.textContent='+'+cur;}
-                            },30);
-                        }
-                        hObs.unobserve(heroNum);
-                    }
-                });
-            },{threshold:0.3});
-            hObs.observe(heroNum);
-        }
     })();
 </script>
 </body>
