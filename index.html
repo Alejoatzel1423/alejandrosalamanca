@@ -80,11 +80,12 @@
         @keyframes morphBlob{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}33%{border-radius:30% 70% 70% 30%/30% 50% 70% 50%}66%{border-radius:70% 30% 50% 50%/50% 70% 30% 50%}}
         @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
         @keyframes wiggle{0%,100%{transform:rotate(0deg)}25%{transform:rotate(2deg)}75%{transform:rotate(-2deg)}}
-        @keyframes breathe{0%,100%{opacity:0.4}50%{opacity:0.8}}
+        @keyframes bgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        @keyframes breathe{0%,100%{opacity:0.3}50%{opacity:0.7}}
         @keyframes spinSlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 
-        /* ===== PARTICLES (30 roaming particles) ===== */
-        .particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+        /* ===== PARTICLES (30 - MUY VISIBLES SOBRE TODO) ===== */
+        .particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:hidden}
         .particle{position:absolute;border-radius:50%;opacity:0;filter:blur(1.5px);animation-duration:20s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
         .particle:nth-child(1){width:6px;height:6px;background:var(--accent);animation-name:roam1;animation-delay:0s}
         .particle:nth-child(2){width:4px;height:4px;background:rgba(102,0,255,0.6);animation-name:roam2;animation-delay:.3s}
@@ -118,7 +119,7 @@
         .particle:nth-child(30){width:3px;height:3px;background:rgba(102,0,255,0.3);animation-name:roam15;animation-delay:8.7s}
 
         /* ===== BLUR ELEMENTS (12) ===== */
-        .blur-el{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:0.25}
+        .blur-el{position:fixed;border-radius:50%;pointer-events:none;z-index:4;filter:blur(60px);opacity:0.3}
         .blur-el:nth-child(31){width:400px;height:400px;background:var(--accent);top:-10%;right:-5%;animation:jitterA 25s infinite}
         .blur-el:nth-child(32){width:300px;height:300px;background:rgba(102,0,255,0.2);bottom:10%;left:-5%;animation:jitterB 30s infinite}
         .blur-el:nth-child(33){width:250px;height:250px;background:rgba(68,0,169,0.15);top:40%;left:50%;animation:jitterC 35s infinite}
@@ -131,6 +132,16 @@
         .blur-el:nth-child(40){width:380px;height:380px;background:rgba(168,85,247,0.08);top:30%;right:-10%;animation:jitterA 45s infinite}
         .blur-el:nth-child(41){width:160px;height:160px;background:rgba(68,0,169,0.2);bottom:5%;left:50%;animation:jitterB 20s infinite}
         .blur-el:nth-child(42){width:260px;height:260px;background:rgba(102,0,255,0.12);top:50%;left:30%;animation:jitterC 33s infinite}
+
+        /* ===== DECORATIVE LINES ===== */
+        .deco-lines{position:fixed;pointer-events:none;z-index:4;width:100%;height:100%;top:0;left:0;overflow:hidden}
+        .deco-line{position:absolute;background:linear-gradient(90deg,transparent,rgba(102,0,255,0.06),transparent);height:1px;width:100%}
+        .deco-line:nth-child(43){top:15%;animation:jitterA 45s infinite}
+        .deco-line:nth-child(44){top:33%;animation:jitterB 50s infinite}
+        .deco-line:nth-child(45){top:50%;animation:jitterC 55s infinite}
+        .deco-line:nth-child(46){top:66%;animation:jitterA 40s infinite}
+        .deco-line:nth-child(47){top:80%;animation:jitterB 48s infinite}
+        .deco-line:nth-child(48){top:92%;animation:jitterC 52s infinite}
 
         /* ===== HEADER ===== */
         .hdr{
@@ -188,6 +199,7 @@
         /* ===== HERO IMAGE (BIGGER) ===== */
         .hero-img{width:clamp(300px,32vw,440px);height:clamp(300px,32vw,440px);border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.06);animation:float 4s ease-in-out infinite}
         .hero-img img{width:100%;height:100%;object-fit:cover}
+        @media(max-width:768px){.hero-img{animation:none;width:280px;height:280px}}
 
         /* ===== BUTTONS ===== */
         .btn{
@@ -214,8 +226,15 @@
         }
         .social a:hover{color:var(--text);background:rgba(255,255,255,0.04);transform:scale(1.1) rotate(5deg)}
 
-        /* ===== SECTIONS ===== */
-        .section{padding:80px 0;position:relative;overflow:hidden}
+        /* ===== SECTIONS (con fondos animados) ===== */
+        .section{padding:80px 0;position:relative;overflow:hidden;background-size:400% 400%;animation:bgShift 20s ease-in-out infinite}
+        .section:nth-child(2){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
+        .section:nth-child(4){background:linear-gradient(135deg,#0c0a16,#1a1225,#0c0a16);}
+        .section:nth-child(6){background:linear-gradient(135deg,#18141f,#1f1528,#18141f);}
+        .section:nth-child(8){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
+        .section:nth-child(10){background:linear-gradient(135deg,#18141f,#1f1528,#18141f);}
+        .section:nth-child(12){background:linear-gradient(135deg,#0c0a16,#1a1225,#0c0a16);}
+        .section:nth-child(14){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
         .section-header{text-align:center;max-width:600px;margin:0 auto 50px}
         .section-header h2{margin-bottom:8px}
         .section-header p{font-size:16px;color:var(--body);line-height:1.5}
@@ -496,190 +515,3 @@
             <div class="si">Soporte Técnico</div>
             <div class="si">Office 365</div>
             <div class="si">Google Workspace</div>
-            <div class="si">Atención al Cliente</div>
-        </div>
-    </div>
-</section>
-
-<!-- COUNTERS -->
-<section class="section" style="background:var(--bg2);padding:50px 0;">
-    <div class="container">
-        <div class="ctr">
-            <div class="ctr-item rv d1"><div class="ctr-num"><span class="counter" data-target="23">0</span>+</div><div class="ctr-label">Consultas realizadas</div></div>
-            <div class="ctr-item rv d2"><div class="ctr-num"><span class="counter" data-target="21">0</span></div><div class="ctr-label">Casos Datacrédito</div></div>
-            <div class="ctr-item rv d3"><div class="ctr-num"><span class="counter" data-target="8">0</span>+</div><div class="ctr-label">Años de experiencia</div></div>
-            <div class="ctr-item rv d4"><div class="ctr-num">100%</div><div class="ctr-label">Confidencialidad</div></div>
-        </div>
-    </div>
-</section>
-
-<!-- RESOURCES -->
-<section class="section" style="background:var(--bg);">
-    <div class="container">
-        <div class="section-header" style="text-align:left;margin:0 0 40px;">
-            <span class="badge">Recursos</span>
-            <h2 style="margin-bottom:6px;">Recursos gratuitos</h2>
-            <p>Herramientas y contenidos para ayudarte en tu proceso.</p>
-        </div>
-        <div class="cg">
-            <div class="card rv d1" style="padding:0;overflow:hidden">
-                <div style="height:180px;background:linear-gradient(135deg,rgba(102,0,255,0.06),var(--bg2));display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)">
-                    <i class="fas fa-book-open" style="font-size:40px;color:var(--accent);opacity:0.3"></i>
-                </div>
-                <div style="padding:20px">
-                    <h3>Guía de salud mental</h3>
-                    <p style="font-size:14px;margin-bottom:16px">Primeros pasos para cuidar tu bienestar emocional.</p>
-                    <a href="https://wa.me/573145777777" target="_blank" class="cl" style="font-size:14px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px;transition:gap .3s">Descargar <i class="fas fa-arrow-right" style="font-size:11px"></i></a>
-                </div>
-            </div>
-            <div class="card rv d2" style="padding:0;overflow:hidden">
-                <div style="height:180px;background:linear-gradient(135deg,rgba(102,0,255,0.06),var(--bg2));display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)">
-                    <i class="fas fa-clipboard-check" style="font-size:40px;color:var(--accent);opacity:0.3"></i>
-                </div>
-                <div style="padding:20px">
-                    <h3>Checklist Habeas Data</h3>
-                    <p style="font-size:14px;margin-bottom:16px">Pasos para saber si aplicas para eliminación de reporte.</p>
-                    <a href="https://wa.me/573145777777" target="_blank" class="cl" style="font-size:14px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px;transition:gap .3s">Descargar <i class="fas fa-arrow-right" style="font-size:11px"></i></a>
-                </div>
-            </div>
-            <div class="card rv d3" style="padding:0;overflow:hidden">
-                <div style="height:180px;background:linear-gradient(135deg,rgba(102,0,255,0.06),var(--bg2));display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)">
-                    <i class="fas fa-tools" style="font-size:40px;color:var(--accent);opacity:0.3"></i>
-                </div>
-                <div style="padding:20px">
-                    <h3>Diagnóstico PC gratis</h3>
-                    <p style="font-size:14px;margin-bottom:16px">Evaluación remota de tu equipo para saber qué necesita.</p>
-                    <a href="https://wa.me/573145777777" target="_blank" class="cl" style="font-size:14px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:6px;transition:gap .3s">Solicitar <i class="fas fa-arrow-right" style="font-size:11px"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section" style="background:var(--bg2);">
-    <div class="container">
-        <div class="section-header">
-            <span class="badge">Clientes</span>
-            <h2 style="margin-bottom:6px;">Personas que confiaron en mi trabajo</h2>
-            <p>Cada caso es único, cada resultado habla por sí mismo.</p>
-        </div>
-        <div class="tg rv" id="testimonials"></div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="section" style="background:var(--bg);" id="contacto">
-    <div class="container">
-        <div class="section-header">
-            <span class="badge">Contacto</span>
-            <h2 style="margin-bottom:6px;">Contrataciones y consultorías</h2>
-            <p>Agenda tu cita o solicita información sobre cualquiera de mis servicios.</p>
-        </div>
-        <div class="cta-g">
-            <div class="cta-c rv d1">
-                <div class="cc">
-                    <span class="cb">Psicología</span>
-                    <h3>Agenda tu Consulta Psicológica</h3>
-                    <p>Primera sesión virtual o presencial. Espacio seguro y completamente confidencial.</p>
-                    <a href="https://wa.me/573145777777" target="_blank" class="cl">Comenzar <i class="fas fa-arrow-right" style="font-size:11px"></i></a>
-                </div>
-            </div>
-            <div class="cta-c rv d2">
-                <div class="cc">
-                    <span class="cb">Datacrédito</span>
-                    <h3>Limpia tu Historial Crediticio</h3>
-                    <p>Evaluación gratuita de tu caso. Te explico si aplicas y el proceso paso a paso.</p>
-                    <a href="https://wa.me/573145777777" target="_blank" class="cl">Cotizar <i class="fas fa-arrow-right" style="font-size:11px"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- GRATITUDE -->
-<section class="grat">
-    <div class="container">
-        <h2 class="rv" style="border:none">SIEMPRE<br>GRACIAS</h2>
-        <p class="rv d2">Acompañar a cada persona en su proceso de sanación, recuperación financiera o solución tecnológica es lo que me mueve. Trabajo con compromiso, con atención al detalle y con el deseo de construir algo que dure, que funcione y que esté bien hecho de principio a fin.</p>
-        <div class="social rv d3" style="margin-top:24px">
-            <a href="https://wa.me/573145777777" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:ale.documentospersonales@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <div class="fi">
-        <div class="fgrid">
-            <div class="fc"><h4>Servicios</h4><a href="#servicios">Consultas Psicológicas</a><a href="#servicios">Datacrédito &amp; Cifin</a><a href="#servicios">Licencias Office</a><a href="#servicios">Mantenimiento PC</a></div>
-            <div class="fc"><h4>Navegación</h4><a href="#hero">Inicio</a><a href="#servicios">Servicios</a><a href="#contacto">Contacto</a></div>
-            <div class="fc"><h4>Contacto</h4><a href="https://wa.me/573145777777">WhatsApp</a><a href="mailto:ale.documentospersonales@gmail.com">Email</a></div>
-            <div class="fc"><h4>Legal</h4><a href="#">Privacidad</a><a href="#">Términos</a></div>
-        </div>
-        <div class="fb"><p>© 2026 Alejandro Salamanca · Bogotá, Colombia</p></div>
-    </div>
-</footer>
-
-<div class="mb">
-    <div class="social">
-        <a href="https://wa.me/573145777777" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="mailto:ale.documentospersonales@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    </div>
-</div>
-
-<script>
-(function(){
-    'use strict';
-    var hdr=document.getElementById('hdr');
-    window.addEventListener('scroll',function(){hdr.classList.toggle('sc',window.pageYOffset>60)},{passive:true});
-    document.getElementById('ham').addEventListener('click',function(){
-        document.getElementById('nav').classList.toggle('o');this.classList.toggle('a');
-    });
-    document.querySelectorAll('nav a').forEach(function(l){
-        l.addEventListener('click',function(){
-            document.getElementById('nav').classList.remove('o');document.getElementById('ham').classList.remove('a');
-        });
-    });
-    var els=document.querySelectorAll('.rv');
-    if('IntersectionObserver'in window){
-        var obs=new IntersectionObserver(function(entries){
-            entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}});
-        },{threshold:0.08,rootMargin:'0px 0px -50px 0px'});
-        els.forEach(function(el){obs.observe(el)});
-    }else{els.forEach(function(el){el.classList.add('v')})}
-    var c=document.querySelectorAll('.counter');
-    var co=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-            if(e.isIntersecting){
-                var el=e.target,t=parseInt(el.getAttribute('data-target'),10);
-                if(isNaN(t))return;
-                var cur=0,inc=Math.ceil(t/35),ti=setInterval(function(){cur+=inc;if(cur>=t){el.textContent=t;clearInterval(ti)}else{el.textContent=cur}},30);
-                co.unobserve(el);
-            }
-        });
-    },{threshold:0.5});
-    c.forEach(function(x){co.observe(x)});
-    var tg=document.getElementById('testimonials');
-    if(tg){
-        var names=['Cliente Bogotá','Cliente Medellín','Cliente Cali','Cliente Barranquilla','Cliente Bucaramanga','Cliente Cartagena','Cliente Pereira','Cliente Manizales'];
-        tg.innerHTML=names.map(function(n,i){
-            var letters=['CB','MC','CC','CB','CB','CC','CP','CM'];
-            return '<div class="tc rv d'+(i%4+1)+'"><div class="ta">'+letters[i]+'</div><div class="tn">'+n+'</div><div class="tr">Colombia</div></div>';
-        }).join('');
-        setTimeout(function(){
-            document.querySelectorAll('#testimonials .rv').forEach(function(el){
-                var obs2=new IntersectionObserver(function(entries){
-                    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');obs2.unobserve(e.target)}});
-                },{threshold:0.08});
-                obs2.observe(el);
-            });
-        },100);
-    }
-})();
-</script>
-</body>
-</html>
