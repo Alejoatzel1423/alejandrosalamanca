@@ -54,45 +54,76 @@
         @keyframes roam8{0%{opacity:0;top:75%;left:75%}10%{opacity:1;top:55%;left:65%}30%{opacity:.8;top:35%;left:45%}50%{opacity:1;top:15%;left:25%}70%{opacity:.7;top:45%;left:45%}90%{opacity:1;top:65%;left:65%}100%{opacity:0;top:75%;left:75%}}
         @keyframes roam9{0%{opacity:0;top:40%;left:20%}10%{opacity:1;top:60%;left:10%}30%{opacity:.8;top:80%;left:30%}50%{opacity:1;top:60%;left:50%}70%{opacity:.7;top:40%;left:40%}90%{opacity:1;top:20%;left:30%}100%{opacity:0;top:40%;left:20%}}
         @keyframes roam10{0%{opacity:0;top:10%;left:40%}10%{opacity:1;top:30%;left:60%}30%{opacity:.8;top:50%;left:80%}50%{opacity:1;top:70%;left:50%}70%{opacity:.7;top:50%;left:25%}90%{opacity:1;top:30%;left:35%}100%{opacity:0;top:10%;left:40%}}
-        @keyframes jitterA{0%{opacity:0;transform:translate(0,0) scale(.8)}20%{opacity:1;transform:translate(45px,-45px) scale(1)}40%{opacity:.6;transform:translate(-45px,45px) scale(.7)}60%{opacity:1;transform:translate(45px,45px) scale(1.1)}80%{opacity:.7;transform:translate(-45px,-45px) scale(.6)}100%{opacity:0;transform:translate(0,0) scale(.8)}}
-        @keyframes jitterB{0%{opacity:0;transform:translate(0,0) scale(.6)}20%{opacity:1;transform:translate(-43px,45px) scale(1)}40%{opacity:.6;transform:translate(43px,-45px) scale(.8)}60%{opacity:1;transform:translate(-43px,-45px) scale(1.2)}80%{opacity:.7;transform:translate(43px,45px) scale(.5)}100%{opacity:0;transform:translate(0,0) scale(.6)}}
+        @keyframes roam11{0%{opacity:0;top:15%;left:5%}15%{opacity:1;top:35%;left:25%}35%{opacity:.8;top:55%;left:15%}55%{opacity:1;top:75%;left:55%}75%{opacity:.7;top:45%;left:85%}100%{opacity:0;top:15%;left:5%}}
+        @keyframes roam12{0%{opacity:0;top:80%;left:80%}15%{opacity:1;top:60%;left:60%}35%{opacity:.8;top:40%;left:35%}55%{opacity:1;top:20%;left:55%}75%{opacity:.7;top:55%;left:75%}100%{opacity:0;top:80%;left:80%}}
+        @keyframes roam13{0%{opacity:0;top:30%;left:85%}15%{opacity:1;top:50%;left:65%}35%{opacity:.8;top:70%;left:45%}55%{opacity:1;top:50%;left:25%}75%{opacity:.7;top:30%;left:45%}100%{opacity:0;top:30%;left:85%}}
+        @keyframes roam14{0%{opacity:0;top:60%;left:10%}15%{opacity:1;top:40%;left:30%}35%{opacity:.8;top:20%;left:50%}55%{opacity:1;top:40%;left:70%}75%{opacity:.7;top:60%;left:50%}100%{opacity:0;top:60%;left:10%}}
+        @keyframes roam15{0%{opacity:0;top:5%;left:90%}15%{opacity:1;top:25%;left:70%}35%{opacity:.8;top:45%;left:50%}55%{opacity:1;top:65%;left:30%}75%{opacity:.7;top:45%;left:70%}100%{opacity:0;top:5%;left:90%}}
+        @keyframes jitterA{0%{opacity:0;transform:translate(0,0) scale(.8)}15%{opacity:1;transform:translate(55px,-55px) scale(1.1)}30%{opacity:.6;transform:translate(-55px,55px) scale(.7)}45%{opacity:1;transform:translate(55px,55px) scale(1.15)}60%{opacity:.7;transform:translate(-55px,-55px) scale(.6)}75%{opacity:1;transform:translate(30px,-30px) scale(1.05)}100%{opacity:0;transform:translate(0,0) scale(.8)}}
+        @keyframes jitterB{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:1;transform:translate(-53px,55px) scale(1.05)}30%{opacity:.6;transform:translate(53px,-55px) scale(.8)}45%{opacity:1;transform:translate(-53px,-55px) scale(1.25)}60%{opacity:.7;transform:translate(53px,55px) scale(.5)}75%{opacity:1;transform:translate(-30px,30px) scale(1.1)}100%{opacity:0;transform:translate(0,0) scale(.6)}}
+        @keyframes jitterC{0%{opacity:0;transform:translate(0,0) rotate(0deg)}20%{opacity:1;transform:translate(40px,-30px) rotate(5deg)}40%{opacity:.6;transform:translate(-30px,40px) rotate(-5deg)}60%{opacity:1;transform:translate(40px,30px) rotate(3deg)}80%{opacity:.7;transform:translate(-40px,-30px) rotate(-3deg)}100%{opacity:0;transform:translate(0,0) rotate(0deg)}}
         @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes pulseGlow{0%,100%{box-shadow:0 0 20px rgba(102,0,255,0.2)}50%{box-shadow:0 0 40px rgba(102,0,255,0.4)}}
+        @keyframes pulseGlow{0%,100%{box-shadow:0 0 20px rgba(102,0,255,0.2)}50%{box-shadow:0 0 60px rgba(102,0,255,0.5)}}
         @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        @keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}
-        @keyframes scaleIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
-        @keyframes slideLeft{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
-        @keyframes slideRight{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
-        @keyframes morphBlob{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}}
+        @keyframes float{0%,100%{transform:translateY(0px)}33%{transform:translateY(-10px)}66%{transform:translateY(5px)}}
+        @keyframes floatSlow{0%,100%{transform:translateY(0px) rotate(0deg)}25%{transform:translateY(-5px) rotate(1deg)}50%{transform:translateY(-12px) rotate(0deg)}75%{transform:translateY(-3px) rotate(-1deg)}}
+        @keyframes scaleIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+        @keyframes slideLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes slideRight{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes morphBlob{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}33%{border-radius:30% 70% 70% 30%/30% 50% 70% 50%}66%{border-radius:70% 30% 50% 50%/50% 70% 30% 50%}}
+        @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+        @keyframes wiggle{0%,100%{transform:rotate(0deg)}25%{transform:rotate(2deg)}75%{transform:rotate(-2deg)}}
+        @keyframes breathe{0%,100%{opacity:0.4}50%{opacity:0.8}}
+        @keyframes spinSlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 
-        /* ===== PARTICLES ===== */
+        /* ===== PARTICLES (30 roaming particles) ===== */
         .particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
-        .particle{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0;filter:blur(1px);animation-duration:20s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
-        .particle:nth-child(1){animation-name:roam1;animation-delay:0s}
-        .particle:nth-child(2){width:4px;animation-name:roam2;animation-delay:.5s}
-        .particle:nth-child(3){width:8px;animation-name:roam3;animation-delay:1s}
-        .particle:nth-child(4){width:5px;animation-name:roam4;animation-delay:1.5s}
-        .particle:nth-child(5){width:7px;animation-name:roam5;animation-delay:2s}
-        .particle:nth-child(6){width:3px;animation-name:roam6;animation-delay:2.5s}
-        .particle:nth-child(7){width:6px;animation-name:roam7;animation-delay:3s}
-        .particle:nth-child(8){width:9px;animation-name:roam8;animation-delay:3.5s}
-        .particle:nth-child(9){width:4px;animation-name:roam9;animation-delay:4s}
-        .particle:nth-child(10){width:5px;animation-name:roam10;animation-delay:4.5s}
+        .particle{position:absolute;border-radius:50%;opacity:0;filter:blur(1.5px);animation-duration:20s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
+        .particle:nth-child(1){width:6px;height:6px;background:var(--accent);animation-name:roam1;animation-delay:0s}
+        .particle:nth-child(2){width:4px;height:4px;background:rgba(102,0,255,0.6);animation-name:roam2;animation-delay:.3s}
+        .particle:nth-child(3){width:8px;height:8px;background:var(--accent);animation-name:roam3;animation-delay:.6s}
+        .particle:nth-child(4){width:5px;height:5px;background:rgba(168,85,247,0.5);animation-name:roam4;animation-delay:.9s}
+        .particle:nth-child(5){width:7px;height:7px;background:var(--accent);animation-name:roam5;animation-delay:1.2s}
+        .particle:nth-child(6){width:3px;height:3px;background:rgba(102,0,255,0.4);animation-name:roam6;animation-delay:1.5s}
+        .particle:nth-child(7){width:6px;height:6px;background:rgba(168,85,247,0.6);animation-name:roam7;animation-delay:1.8s}
+        .particle:nth-child(8){width:9px;height:9px;background:var(--accent);animation-name:roam8;animation-delay:2.1s}
+        .particle:nth-child(9){width:4px;height:4px;background:rgba(102,0,255,0.5);animation-name:roam9;animation-delay:2.4s}
+        .particle:nth-child(10){width:5px;height:5px;background:rgba(168,85,247,0.4);animation-name:roam10;animation-delay:2.7s}
+        .particle:nth-child(11){width:7px;height:7px;background:var(--accent);animation-name:roam11;animation-delay:3s}
+        .particle:nth-child(12){width:3px;height:3px;background:rgba(102,0,255,0.3);animation-name:roam12;animation-delay:3.3s}
+        .particle:nth-child(13){width:6px;height:6px;background:rgba(168,85,247,0.5);animation-name:roam13;animation-delay:3.6s}
+        .particle:nth-child(14){width:8px;height:8px;background:var(--accent);animation-name:roam14;animation-delay:3.9s}
+        .particle:nth-child(15){width:4px;height:4px;background:rgba(102,0,255,0.4);animation-name:roam15;animation-delay:4.2s}
+        .particle:nth-child(16){width:5px;height:5px;background:rgba(168,85,247,0.6);animation-name:roam1;animation-delay:4.5s}
+        .particle:nth-child(17){width:7px;height:7px;background:var(--accent);animation-name:roam2;animation-delay:4.8s}
+        .particle:nth-child(18){width:3px;height:3px;background:rgba(102,0,255,0.5);animation-name:roam3;animation-delay:5.1s}
+        .particle:nth-child(19){width:6px;height:6px;background:rgba(168,85,247,0.4);animation-name:roam4;animation-delay:5.4s}
+        .particle:nth-child(20){width:9px;height:9px;background:var(--accent);animation-name:roam5;animation-delay:5.7s}
+        .particle:nth-child(21){width:4px;height:4px;background:rgba(102,0,255,0.3);animation-name:roam6;animation-delay:6s}
+        .particle:nth-child(22){width:5px;height:5px;background:rgba(168,85,247,0.5);animation-name:roam7;animation-delay:6.3s}
+        .particle:nth-child(23){width:8px;height:8px;background:var(--accent);animation-name:roam8;animation-delay:6.6s}
+        .particle:nth-child(24){width:3px;height:3px;background:rgba(102,0,255,0.4);animation-name:roam9;animation-delay:6.9s}
+        .particle:nth-child(25){width:6px;height:6px;background:rgba(168,85,247,0.6);animation-name:roam10;animation-delay:7.2s}
+        .particle:nth-child(26){width:7px;height:7px;background:var(--accent);animation-name:roam11;animation-delay:7.5s}
+        .particle:nth-child(27){width:4px;height:4px;background:rgba(102,0,255,0.5);animation-name:roam12;animation-delay:7.8s}
+        .particle:nth-child(28){width:5px;height:5px;background:rgba(168,85,247,0.4);animation-name:roam13;animation-delay:8.1s}
+        .particle:nth-child(29){width:9px;height:9px;background:var(--accent);animation-name:roam14;animation-delay:8.4s}
+        .particle:nth-child(30){width:3px;height:3px;background:rgba(102,0,255,0.3);animation-name:roam15;animation-delay:8.7s}
 
-        /* ===== DECORATIVE BLUR ===== */
+        /* ===== BLUR ELEMENTS (12) ===== */
         .blur-el{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:0.25}
-        .blur-el:nth-child(1){width:400px;height:400px;background:var(--accent);top:-10%;right:-5%;animation:jitterA 25s infinite}
-        .blur-el:nth-child(2){width:300px;height:300px;background:rgba(102,0,255,0.2);bottom:10%;left:-5%;animation:jitterB 30s infinite}
-        .blur-el:nth-child(3){width:250px;height:250px;background:rgba(68,0,169,0.15);top:40%;left:50%;animation:jitterA 35s infinite}
-        .blur-el:nth-child(4){width:350px;height:350px;background:rgba(102,0,255,0.12);bottom:-10%;right:20%;animation:jitterB 28s infinite}
-        .blur-el:nth-child(5){width:200px;height:200px;background:rgba(68,0,169,0.2);top:20%;left:10%;animation:jitterA 40s infinite}
-        .blur-el:nth-child(6){width:280px;height:280px;background:rgba(102,0,255,0.1);top:60%;left:60%;animation:jitterB 32s infinite}
-
-        /* ===== DECORATIVE LINES ===== */
-        .deco-lines{position:fixed;pointer-events:none;z-index:0;width:100%;height:100%;top:0;left:0;overflow:hidden}
-        .deco-line{position:absolute;background:linear-gradient(90deg,transparent,rgba(102,0,255,0.05),transparent);height:1px;width:100%}
-        .deco-line:nth-child(1){top:33%;animation:jitterA 45s infinite}
-        .deco-line:nth-child(2){top:66%;animation:jitterB 50s infinite}
+        .blur-el:nth-child(31){width:400px;height:400px;background:var(--accent);top:-10%;right:-5%;animation:jitterA 25s infinite}
+        .blur-el:nth-child(32){width:300px;height:300px;background:rgba(102,0,255,0.2);bottom:10%;left:-5%;animation:jitterB 30s infinite}
+        .blur-el:nth-child(33){width:250px;height:250px;background:rgba(68,0,169,0.15);top:40%;left:50%;animation:jitterC 35s infinite}
+        .blur-el:nth-child(34){width:350px;height:350px;background:rgba(102,0,255,0.12);bottom:-10%;right:20%;animation:jitterA 28s infinite}
+        .blur-el:nth-child(35){width:200px;height:200px;background:rgba(68,0,169,0.2);top:20%;left:10%;animation:jitterB 40s infinite}
+        .blur-el:nth-child(36){width:280px;height:280px;background:rgba(102,0,255,0.1);top:60%;left:60%;animation:jitterC 32s infinite}
+        .blur-el:nth-child(37){width:180px;height:180px;background:rgba(168,85,247,0.15);top:5%;left:40%;animation:jitterA 22s infinite}
+        .blur-el:nth-child(38){width:320px;height:320px;background:rgba(68,0,169,0.1);bottom:30%;right:10%;animation:jitterB 38s infinite}
+        .blur-el:nth-child(39){width:220px;height:220px;background:rgba(102,0,255,0.15);top:70%;left:15%;animation:jitterC 27s infinite}
+        .blur-el:nth-child(40){width:380px;height:380px;background:rgba(168,85,247,0.08);top:30%;right:-10%;animation:jitterA 45s infinite}
+        .blur-el:nth-child(41){width:160px;height:160px;background:rgba(68,0,169,0.2);bottom:5%;left:50%;animation:jitterB 20s infinite}
+        .blur-el:nth-child(42){width:260px;height:260px;background:rgba(102,0,255,0.12);top:50%;left:30%;animation:jitterC 33s infinite}
 
         /* ===== HEADER ===== */
         .hdr{
@@ -147,7 +178,8 @@
         @media(max-width:768px){.hero-acts{justify-content:center}}
         .hero-img-wrap{display:flex;justify-content:flex-end;align-items:center;opacity:0;animation:fadeUp .8s .5s forwards}
         @media(max-width:768px){.hero-img-wrap{justify-content:center}}
-        .hero-img{width:clamp(260px,28vw,380px);height:clamp(260px,28vw,380px);border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.06);animation:float 5s ease-in-out infinite}
+        /* ===== HERO IMAGE (BIGGER) ===== */
+        .hero-img{width:clamp(300px,32vw,440px);height:clamp(300px,32vw,440px);border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.06);animation:float 4s ease-in-out infinite}
         .hero-img img{width:100%;height:100%;object-fit:cover}
 
         /* ===== BUTTONS ===== */
@@ -291,9 +323,9 @@
 <body>
 
 <!-- DECORATIVE -->
-<div class="particle-container"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
-<div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div>
-<div class="deco-lines"><div class="deco-line"></div><div class="deco-line"></div></div>
+<div class="particle-container"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
+<div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div>
+<div class="deco-lines"><div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div></div>
 
 <!-- HEADER -->
 <header class="hdr" id="hdr">
