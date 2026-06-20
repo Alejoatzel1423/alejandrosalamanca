@@ -3,447 +3,1073 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alejandro Salamanca — Psicología · Datacrédito · Sistemas</title>
-    <meta name="description" content="Alejandro Salamanca: Consultas psicológicas, eliminación de castigos en Datacrédito y Cifin, venta de licencias Office y mantenimiento de PC. Bogotá y online.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>AS</text></svg>">
+    <title>Alejandro Salamanca Ávila — Consultoría Psicológica y Gestión Financiera</title>
+    <meta name="description" content="Consultoría psicológica integral y gestión de soluciones financieras. Eliminación de castigos en Datacrédito y Cifin, asesoría en Habeas Data y Psychological Counseling.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ASA</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ============================================================
+           ROOT VARIABLES & RESET
+           ============================================================ */
+        :root {
+            --clr-black:        #0f0f12;
+            --clr-dark:         #1a1a22;
+            --clr-mid:          #2c2c38;
+            --clr-gray:         #6b7280;
+            --clr-light-gray:   #9ca3af;
+            --clr-offwhite:     #f3f4f6;
+            --clr-white:        #ffffff;
+
+            --clr-legal-bg:     #f8fafc;
+            --clr-legal-accent: #1e3a5f;
+            --clr-legal-btn:    #1e3a5f;
+            --clr-legal-text:   #1e293b;
+
+            --clr-psych-bg:     #fdf2f0;
+            --clr-psych-accent: #b45396;
+            --clr-psych-btn:    #b45396;
+            --clr-psych-text:   #3b1f2e;
+
+            --clr-accent:       #3b82f6;
+            --clr-accent-dark:  #2563eb;
+            --clr-highlight:    #f59e0b;
+
+            --font: 'Inter', system-ui, -apple-system, sans-serif;
+            --max-w: 1120px;
+            --nav-h: 68px;
+
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: var(--font);
             -webkit-font-smoothing: antialiased;
-            color: #191c1f;
-            background: #ffffff;
-            line-height: 1.5;
-            letter-spacing: 0.16px;
+            color: var(--clr-dark);
+            background: var(--clr-white);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* ========== NAV ========== */
-        header {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(25,28,31,0.06);
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        nav {
-            max-width: 1100px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 32px; height: 64px;
+
+        /* ============================================================
+           HEADER / NAV
+           ============================================================ */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            height: var(--nav-h);
+            background: rgba(15,15,18,0.85);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: background var(--transition);
         }
+
+        .header.scrolled {
+            background: rgba(15,15,18,0.95);
+        }
+
+        .nav {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: var(--nav-h);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         .nav-logo {
-            font-size: 20px; font-weight: 500; color: #191c1f;
-            text-decoration: none; letter-spacing: -0.2px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--clr-white);
+            letter-spacing: -0.3px;
         }
-        .nav-links { display: flex; align-items: center; gap: 4px; }
+
+        .nav-logo span {
+            color: var(--clr-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .nav-links a {
-            color: #505a63; text-decoration: none;
-            font-size: 15px; font-weight: 500; padding: 8px 16px;
-            border-radius: 9999px; transition: all 0.2s;
+            color: rgba(255,255,255,0.65);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            transition: all var(--transition);
         }
-        .nav-links a:hover { color: #191c1f; background: #f4f4f4; }
+
+        .nav-links a:hover {
+            color: var(--clr-white);
+            background: rgba(255,255,255,0.08);
+        }
+
         .nav-cta {
-            background: #191c1f; color: #fff !important;
-            padding: 10px 24px !important; border-radius: 9999px !important;
-            font-weight: 500; margin-left: 8px;
+            background: var(--clr-accent) !important;
+            color: var(--clr-white) !important;
+            padding: 10px 24px !important;
+            font-weight: 600 !important;
+            margin-left: 8px;
         }
-        .nav-cta:hover { opacity: 0.85; background: #191c1f !important; }
 
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
-        .hamburger span { width: 22px; height: 2px; background: #191c1f; border-radius: 2px; display: block; }
+        .nav-cta:hover {
+            opacity: 0.9;
+            background: var(--clr-accent-dark) !important;
+        }
 
-        /* ========== HERO ========== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--clr-white);
+            border-radius: 2px;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ============================================================
+           REVEAL ON SCROLL
+           ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ============================================================
+           HERO
+           ============================================================ */
         .hero {
-            min-height: 90vh; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; text-align: center;
-            background: #ffffff; color: #191c1f;
-            padding: 140px 32px 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--clr-black);
+            color: var(--clr-white);
+            padding: calc(var(--nav-h) + 40px) 24px 80px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 30%, rgba(59,130,246,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 70%, rgba(245,158,11,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            text-align: center;
+            max-width: 880px;
+        }
+
         .hero-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 6px 16px; border-radius: 9999px;
-            background: #f4f4f4; font-size: 13px; font-weight: 500;
-            color: #505a63; margin-bottom: 32px; letter-spacing: 0.4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 18px;
+            border-radius: 9999px;
+            background: rgba(59,130,246,0.1);
+            border: 1px solid rgba(59,130,246,0.15);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--clr-accent);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
         }
+
         .hero h1 {
-            font-size: clamp(48px, 8vw, 100px);
-            font-weight: 500; line-height: 1.00;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px; max-width: 900px;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, #191c1f 30%, #494fdf 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: clamp(17px, 2vw, 21px);
-            font-weight: 400; line-height: 1.56;
-            color: #505a63; letter-spacing: -0.09px;
-            max-width: 600px; margin: 0 auto 40px;
-        }
-        .hero-tags {
-            display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
-            margin-bottom: 48px;
-        }
-        .hero-tag {
-            padding: 6px 18px; border-radius: 9999px;
-            background: #f4f4f4; font-size: 14px; font-weight: 500;
-            color: #505a63;
-        }
-        .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 14px 34px; border-radius: 9999px;
-            font-size: 16px; font-weight: 500; text-decoration: none;
-            transition: opacity 0.2s; border: none; cursor: pointer;
-            letter-spacing: 0.16px; font-family: 'Inter', sans-serif;
-        }
-        .btn:hover { opacity: 0.85; }
-        .btn-primary { background: #191c1f; color: #fff; }
-        .btn-secondary { background: #f4f4f4; color: #000; }
-        .btn-outline {
-            background: transparent; color: #191c1f;
-            border: 2px solid #191c1f;
-        }
-        .btn-whatsapp { background: #191c1f; color: #fff; }
-        .btn-whatsapp:hover { opacity: 0.85; }
-
-        /* ========== SECTIONS ========== */
-        section { padding: 100px 32px; }
-        .container { max-width: 1100px; margin: 0 auto; }
-
-        .section-eyebrow {
-            font-size: 14px; font-weight: 600; color: #494fdf;
-            letter-spacing: 0.5px; text-transform: uppercase;
+            font-size: clamp(40px, 7vw, 80px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.035em;
             margin-bottom: 16px;
         }
-        .section-title {
-            font-size: clamp(36px, 4.5vw, 64px);
-            font-weight: 500; line-height: 1.05;
-            letter-spacing: -0.02em; margin-bottom: 16px;
-            color: #191c1f;
-        }
-        .section-desc {
-            font-size: 18px; font-weight: 400; line-height: 1.56;
-            color: #505a63; letter-spacing: -0.09px;
-            max-width: 520px; margin-bottom: 56px;
-        }
 
-        /* ========== ABOUT ========== */
-        #about { background: #ffffff; }
-        .about-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-            align-items: center;
-        }
-        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
-        .about-visual {
-            width: 100%; aspect-ratio: 1/1; border-radius: 20px;
-            background: #f4f4f4;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 120px; font-weight: 500; color: rgba(25,28,31,0.08);
-        }
-        .about-content { font-size: 17px; line-height: 1.56; color: #505a63; }
-        .about-content p { margin-bottom: 20px; }
-        .about-content strong { color: #191c1f; font-weight: 600; }
-        .about-highlights {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 28px;
-        }
-        .highlight-item {
-            padding: 12px 16px; background: #f4f4f4; border-radius: 12px;
-            font-size: 14px; font-weight: 500; color: #191c1f;
-        }
-
-        /* ========== SERVICES ========== */
-        #services { background: #191c1f; color: #fff; }
-        #services .section-title { color: #fff; }
-        #services .section-desc { color: rgba(255,255,255,0.6); }
-        .services-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-        }
-        @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
-        @media (min-width: 769px) and (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-        .service-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 20px; padding: 48px 36px;
-            transition: all 0.3s;
-        }
-        .service-card:hover {
-            background: rgba(255,255,255,0.07);
-            border-color: rgba(255,255,255,0.1);
-        }
-        .service-icon { font-size: 36px; margin-bottom: 24px; }
-        .service-card .label {
-            font-size: 12px; font-weight: 600; color: #494fdf;
-            text-transform: uppercase; letter-spacing: 1.5px;
-            margin-bottom: 8px;
-        }
-        .service-card h3 {
-            font-size: 24px; font-weight: 500; line-height: 1.33;
-            margin-bottom: 12px; color: #fff;
-        }
-        .service-card p {
-            font-size: 15px; line-height: 1.56;
-            color: rgba(255,255,255,0.55);
-            letter-spacing: 0.16px; margin-bottom: 20px;
-        }
-        .service-features { list-style: none; }
-        .service-features li {
-            font-size: 14px; color: rgba(255,255,255,0.5);
-            padding: 5px 0; display: flex; align-items: center; gap: 10px;
-        }
-        .service-features li::before {
-            content: '✓'; color: #494fdf; font-weight: 700;
-        }
-
-        /* ========== STATS ========== */
-        #stats { background: #ffffff; text-align: center; }
-        .stats-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
-            max-width: 900px; margin: 0 auto;
-        }
-        @media (max-width: 640px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
-        .stat-item { text-align: center; }
-        .stat-number {
-            font-size: clamp(48px, 6vw, 72px);
-            font-weight: 500; line-height: 1.00;
-            letter-spacing: -0.03em; margin-bottom: 8px;
-            background: linear-gradient(135deg, #191c1f, #494fdf);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--clr-accent) 0%, #a78bfa 60%, var(--clr-highlight) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .stat-label { font-size: 15px; color: #505a63; font-weight: 400; letter-spacing: 0.16px; }
 
-        /* ========== CONTACT ========== */
-        #contact { background: #f4f4f4; text-align: center; }
-        .contact-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-            max-width: 800px; margin: 0 auto;
+        .hero h2 {
+            font-size: clamp(18px, 2.2vw, 26px);
+            font-weight: 400;
+            line-height: 1.35;
+            color: rgba(255,255,255,0.75);
+            max-width: 680px;
+            margin: 0 auto 20px;
         }
-        @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
-        .contact-card {
-            background: #fff; border-radius: 20px; padding: 40px 24px;
-            text-decoration: none; color: #191c1f;
-            transition: all 0.2s; border: 1px solid rgba(25,28,31,0.04);
-        }
-        .contact-card:hover { background: #fafafa; }
-        .contact-icon { font-size: 28px; margin-bottom: 12px; }
-        .contact-card h4 { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
-        .contact-card p { font-size: 14px; color: #505a63; }
 
-        /* ========== FOOTER ========== */
-        footer {
-            background: #191c1f; color: rgba(255,255,255,0.4);
-            text-align: center; padding: 32px; font-size: 14px;
-            letter-spacing: 0.16px;
+        .hero p {
+            font-size: clamp(15px, 1.4vw, 17px);
+            line-height: 1.7;
+            color: rgba(255,255,255,0.5);
+            max-width: 640px;
+            margin: 0 auto 40px;
         }
-        footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-        footer a:hover { color: #fff; }
 
-        /* ========== WHATSAPP FLOATING ========== */
-        .whatsapp-float {
-            position: fixed; bottom: 28px; right: 28px; z-index: 999;
-            width: 56px; height: 56px; border-radius: 50%;
-            background: #191c1f; color: #fff;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 26px; text-decoration: none;
-            transition: all 0.2s; border: 1px solid rgba(255,255,255,0.08);
+        /* Authority Bar */
+        .authority-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
         }
-        .whatsapp-float:hover { background: #2a2d30; }
 
-        /* ========== RESPONSIVE ========== */
+        .authority-item {
+            text-align: center;
+            padding: 16px 24px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            min-width: 180px;
+        }
+
+        .authority-item .num {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--clr-accent);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .authority-item .label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 9999px;
+            font-family: var(--font);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            letter-spacing: -0.16px;
+        }
+
+        .btn-primary {
+            background: var(--clr-accent);
+            color: var(--clr-white);
+            box-shadow: 0 4px 24px rgba(59,130,246,0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--clr-accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(59,130,246,0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--clr-white);
+            border: 1.5px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* ============================================================
+           METHODOLOGY
+           ============================================================ */
+        .methodology {
+            padding: 100px 24px;
+            background: var(--clr-offwhite);
+        }
+
+        .methodology .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--clr-accent);
+            margin-bottom: 12px;
+        }
+
+        .methodology h2 {
+            font-size: clamp(30px, 3.5vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            margin-bottom: 48px;
+            color: var(--clr-black);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .steps-grid { grid-template-columns: 1fr; }
+        }
+
+        .step-card {
+            background: var(--clr-white);
+            border-radius: 20px;
+            padding: 40px 32px;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--clr-accent), var(--clr-highlight));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .step-card:hover::before { opacity: 1; }
+
+        .step-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+        }
+
+        .step-number {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--clr-accent), #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .step-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--clr-black);
+        }
+
+        .step-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--clr-gray);
+        }
+
+        /* ============================================================
+           SERVICES — Dual Block
+           ============================================================ */
+        .services-section {
+            padding: 0;
+        }
+
+        /* --- Block A: Legal / Corpo (CeroDeuda.co) --- */
+        .block-legal {
+            padding: 100px 24px;
+            background: var(--clr-legal-bg);
+            color: var(--clr-legal-text);
+            position: relative;
+        }
+
+        .block-legal::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--clr-psych-bg));
+            pointer-events: none;
+        }
+
+        /* --- Block B: Psych / Warm (PsicoValley) --- */
+        .block-psych {
+            padding: 100px 24px;
+            background: var(--clr-psych-bg);
+            color: var(--clr-psych-text);
+        }
+
+        .service-block .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .service-block .container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        .service-block .content-area { }
+
+        .service-block .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            margin-bottom: 16px;
+        }
+
+        .block-legal .badge {
+            background: var(--clr-legal-accent);
+            color: var(--clr-white);
+        }
+
+        .block-psych .badge {
+            background: var(--clr-psych-accent);
+            color: var(--clr-white);
+        }
+
+        .service-block h3 {
+            font-size: clamp(24px, 2.8vw, 34px);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .service-block p {
+            font-size: 16px;
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .block-legal p { color: rgba(30,41,59,0.75); }
+        .block-psych p  { color: rgba(59,31,46,0.7); }
+
+        .btn-legal {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 9999px;
+            font-family: var(--font);
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            background: var(--clr-legal-btn);
+            color: var(--clr-white);
+        }
+
+        .btn-legal:hover {
+            background: #152d4a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(30,58,95,0.25);
+        }
+
+        .btn-psych {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 9999px;
+            font-family: var(--font);
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            background: var(--clr-psych-btn);
+            color: var(--clr-white);
+        }
+
+        .btn-psych:hover {
+            background: #9a3f80;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(180,83,150,0.25);
+        }
+
+        .service-block .visual-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .service-block .visual-box {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            font-weight: 700;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .block-legal .visual-box {
+            background: linear-gradient(135deg, var(--clr-legal-accent), #2a5a8a);
+            color: rgba(255,255,255,0.08);
+        }
+
+        .block-psych .visual-box {
+            background: linear-gradient(135deg, var(--clr-psych-accent), #d489b8);
+            color: rgba(255,255,255,0.1);
+        }
+
+        .visual-box .symbol {
+            font-size: 120px;
+            opacity: 0.15;
+            position: absolute;
+        }
+
+        .visual-box .label-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .visual-box .label-overlay .big {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .visual-box .label-overlay .small {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+           ABOUT
+           ============================================================ */
+        .about {
+            padding: 100px 24px;
+            background: var(--clr-black);
+            color: var(--clr-white);
+        }
+
+        .about .container {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .about .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--clr-accent);
+            margin-bottom: 12px;
+        }
+
+        .about h2 {
+            font-size: clamp(30px, 3.5vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .about p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.65);
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .about .highlight {
+            color: var(--clr-accent);
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           CONTACT
+           ============================================================ */
+        .contact {
+            padding: 100px 24px;
+            background: linear-gradient(135deg, var(--clr-offwhite) 0%, #e5e7eb 100%);
+            text-align: center;
+        }
+
+        .contact .container {
+            max-width: 640px;
+        }
+
+        .contact .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--clr-accent);
+            margin-bottom: 12px;
+        }
+
+        .contact h2 {
+            font-size: clamp(30px, 3.5vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: var(--clr-black);
+        }
+
+        .contact p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--clr-gray);
+            margin-bottom: 40px;
+        }
+
+        .contact .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 44px;
+            border-radius: 9999px;
+            font-family: var(--font);
+            font-size: 17px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            background: #25D366;
+            color: var(--clr-white);
+            box-shadow: 0 4px 24px rgba(37,211,102,0.3);
+        }
+
+        .contact .btn-wa:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .footer {
+            background: var(--clr-black);
+            color: rgba(255,255,255,0.35);
+            text-align: center;
+            padding: 40px 24px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.5);
+            transition: color var(--transition);
+        }
+
+        .footer a:hover { color: var(--clr-accent); }
+
+        .footer .refs {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 12px;
+            color: rgba(255,255,255,0.25);
+        }
+
+        .footer .refs a {
+            color: var(--clr-accent);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* ============================================================
+           WHATSAPP FLOAT
+           ============================================================ */
+        .wa-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: var(--clr-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+            transition: all var(--transition);
+            border: none;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 28px rgba(37,211,102,0.4);
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
         @media (max-width: 768px) {
             .nav-links {
-                display: none; position: fixed; top: 64px; left: 0; right: 0;
-                background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
-                flex-direction: column; padding: 16px; gap: 4px;
-                border-bottom: 1px solid rgba(25,28,31,0.06);
+                display: none;
+                position: fixed;
+                top: var(--nav-h);
+                left: 0;
+                right: 0;
+                background: rgba(15,15,18,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 16px;
+                gap: 4px;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
             }
+
             .nav-links.open { display: flex; }
-            .nav-links a { padding: 12px 16px; }
+            .nav-links a { padding: 12px 16px; width: 100%; }
             .nav-cta { margin-left: 0; text-align: center; }
             .hamburger { display: flex; }
-            section { padding: 64px 20px; }
-            .hero h1 { font-size: clamp(36px, 12vw, 56px); }
+
+            .authority-bar { gap: 12px; }
+            .authority-item { min-width: 140px; padding: 12px 16px; }
+            .authority-item .num { font-size: 22px; }
+
+            .step-card { padding: 28px 24px; }
+            .step-number { font-size: 36px; }
+
+            .service-block .container { gap: 32px; }
+
+            .wa-float {
+                bottom: 20px;
+                right: 20px;
+                width: 52px;
+                height: 52px;
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .authority-bar { flex-direction: column; align-items: center; }
+            .authority-item { width: 100%; max-width: 240px; }
+            .hero h1 { font-size: 32px; }
+            .hero h2 { font-size: 16px; }
+            .btn { width: 100%; justify-content: center; padding: 14px 24px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <a href="#hero" class="nav-logo">Alejandro Salamanca</a>
-        <button class="hamburger" id="hamburger" aria-label="Menú">
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+    <nav class="nav" aria-label="Navegación principal">
+        <a href="#hero" class="nav-logo">Alejandro<span>Salamanca</span></a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
-        <div class="nav-links" id="navLinks">
+        <div class="nav-links" id="navLinks" role="navigation">
+            <a href="#metodologia">Metodología</a>
+            <a href="#servicios">Servicios</a>
             <a href="#about">Sobre mí</a>
-            <a href="#services">Servicios</a>
-            <a href="#stats">Resultados</a>
-            <a href="#contact" class="nav-cta">Contacto</a>
+            <a href="#contacto" class="nav-cta">Agendar</a>
         </div>
     </nav>
 </header>
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
-    <div class="hero-badge">✦ Atención presencial y online</div>
-    <h1>Hola, soy <span>Alejandro</span></h1>
-    <p>Consultas psicológicas · Eliminación de castigos en Datacrédito y Cifin · Sistemas y licencias Office</p>
-    <div class="hero-tags">
-        <span class="hero-tag">🧠 Consultas psicológicas</span>
-        <span class="hero-tag">📋 Datacrédito & Cifin</span>
-        <span class="hero-tag">💻 Licencias Office · PC</span>
-    </div>
-    <div class="hero-actions">
-        <a href="#services" class="btn btn-primary">Ver servicios →</a>
-        <a href="https://wa.me/573145777777" target="_blank" class="btn btn-outline">💬 WhatsApp</a>
+    <div class="container">
+        <div class="hero-badge reveal">✦ Consultoría Integral</div>
+
+        <h1 class="reveal">
+            Alejandro <span class="gradient">Salamanca Ávila</span>
+        </h1>
+
+        <h2 class="reveal reveal-delay-1">
+            Consultoría Psicológica Integral y Gestión de Soluciones Financieras.
+        </h2>
+
+        <p class="reveal reveal-delay-2">
+            Transformo crisis en estabilidad. Ofrezco un enfoque interdisciplinario que une el respaldo del Psychological Counseling con la asesoría estratégica para la recuperación de tu tranquilidad económica y tu libertad crediticia.
+        </p>
+
+        <div class="authority-bar reveal reveal-delay-2">
+            <div class="authority-item">
+                <div class="num" id="yearsExp">+8</div>
+                <div class="label">Años de Experiencia</div>
+            </div>
+            <div class="authority-item">
+                <div class="num" style="font-size:20px;">⚖️</div>
+                <div class="label">Especialista en<br>Ley de Insolvencia</div>
+            </div>
+            <div class="authority-item">
+                <div class="num" style="font-size:20px;">🧠</div>
+                <div class="label">Enfoque Integral<br>(Derecho de Consumo y Psicología)</div>
+            </div>
+        </div>
+
+        <div class="hero-actions reveal reveal-delay-3">
+            <a href="#contacto" class="btn btn-primary">Recuperar mi Tranquilidad →</a>
+        </div>
     </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section id="about">
+<!-- ===== METHODOLOGY ===== -->
+<section class="methodology" id="metodologia">
     <div class="container">
-        <div class="section-eyebrow">Sobre mí</div>
-        <h2 class="section-title">Más de 40 clientes atendidos</h2>
-        <p class="section-desc">Ayudo a personas con consultas psicológicas, eliminación de castigos en Datacrédito y Cifin, y soluciones de sistemas.</p>
-        <div class="about-grid">
-            <div class="about-visual">AS</div>
-            <div class="about-content">
-                <p>Soy Alejandro Salamanca. Atiendo <strong>consultas psicológicas</strong> presenciales en Bogotá y online para toda Colombia.</p>
-                <p>Gestiono la <strong>eliminación de castigos y reportes negativos en Datacrédito y Cifin</strong> para limpiar tu historial crediticio.</p>
-                <p>También ofrezco <strong>venta de licencias de Office</strong> originales y <strong>mantenimiento de PC</strong> — formateo, limpieza y optimización.</p>
-                <div class="about-highlights">
-                    <div class="highlight-item">🧠 Consultas psicológicas</div>
-                    <div class="highlight-item">📋 Datacrédito & Cifin</div>
-                    <div class="highlight-item">💻 Licencias Office</div>
-                    <div class="highlight-item">🔧 Mantenimiento PC</div>
-                </div>
+        <div class="section-label reveal">Metodología</div>
+        <h2 class="reveal">Un proceso claro hacia tu bienestar</h2>
+
+        <div class="steps-grid">
+            <div class="step-card reveal reveal-delay-1">
+                <div class="step-number">01</div>
+                <h3>Diagnóstico Integral</h3>
+                <p>Evaluamos tu reporte financiero o estado emocional.</p>
+            </div>
+            <div class="step-card reveal reveal-delay-2">
+                <div class="step-number">02</div>
+                <h3>Estrategia Personalizada</h3>
+                <p>Aplicamos Habeas Data o Counseling según el caso.</p>
+            </div>
+            <div class="step-card reveal reveal-delay-3">
+                <div class="step-number">03</div>
+                <h3>Ejecución y Resultados</h3>
+                <p>Recuperas tu acceso al crédito y tu equilibrio mental.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ===== SERVICES ===== -->
-<section id="services">
-    <div class="container">
-        <div class="section-eyebrow" style="color:rgba(255,255,255,0.3);">Servicios</div>
-        <h2 class="section-title">¿En qué puedo ayudarte?</h2>
-        <p class="section-desc">Tres servicios diseñados para resolver lo que te pesa: mente, historial crediticio y tecnología.</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🧠</div>
-                <div class="label">Salud mental</div>
-                <h3>Consultas Psicológicas</h3>
-                <p>Atención profesional presencial en Bogotá y online para toda Colombia. Terapia individual, de pareja y familiar.</p>
-                <ul class="service-features">
-                    <li>Terapia individual</li>
-                    <li>Terapia de pareja</li>
-                    <li>Terapia familiar</li>
-                    <li>Presencial & online</li>
-                </ul>
+<section class="services-section" id="servicios">
+
+    <!-- Block A: Legal / CeroDeuda.co -->
+    <div class="service-block block-legal reveal">
+        <div class="container">
+            <div class="content-area">
+                <span class="badge">CeroDeuda.co</span>
+                <h3>GESTIÓN DE ELIMINACIÓN DE CASTIGOS DE DATACREDITO Y CIFIN</h3>
+                <p>Un reporte negativo no tiene por qué ser permanente. Me especializo en la consultoría y aplicación estratégica del Habeas Data para la eliminación legal de reportes negativos, indebidos o caducados en las bases de datos de DATACREDITO y CIFIN. Te asesoro en la defensa de tus derechos como consumidor financiero y en la estructuración de mecanismos frente al régimen de insolvencia de persona natural.</p>
+                <a href="https://cerodeuda.co" target="_blank" class="btn-legal">Limpiar mi Historial en CeroDeuda.co →</a>
             </div>
-            <div class="service-card">
-                <div class="service-icon">📋</div>
-                <div class="label">Historial crediticio</div>
-                <h3>Datacrédito & Cifin</h3>
-                <p>Gestión profesional para eliminación de castigos, reportes negativos y limpieza de historial en Datacrédito y Cifin.</p>
-                <ul class="service-features">
-                    <li>Eliminación de castigos</li>
-                    <li>Reportes Datacrédito</li>
-                    <li>Reportes Cifin</li>
-                    <li>Limpieza de historial</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">💻</div>
-                <div class="label">Tecnología</div>
-                <h3>Sistemas & Oficina</h3>
-                <p>Venta de licencias originales de Microsoft Office, mantenimiento de PC, formateo, limpieza y optimización de equipos.</p>
-                <ul class="service-features">
-                    <li>Licencias Office originales</li>
-                    <li>Mantenimiento de PC</li>
-                    <li>Formateo y limpieza</li>
-                    <li>Optimización de equipos</li>
-                </ul>
+            <div class="visual-area">
+                <div class="visual-box">
+                    <span class="symbol">⚖️</span>
+                    <div class="label-overlay">
+                        <div class="big">CeroDeuda</div>
+                        <div class="small">Datos, Crédito & Habeas Data</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- ===== STATS ===== -->
-<section id="stats">
-    <div class="container">
-        <div class="section-eyebrow">Cifras reales</div>
-        <h2 class="section-title" style="margin-bottom:48px;">Resultados que hablan</h2>
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">23+</div>
-                <div class="stat-label">Consultas psicológicas</div>
+    <!-- Block B: Psych / PsicoValley -->
+    <div class="service-block block-psych reveal">
+        <div class="container">
+            <div class="visual-area">
+                <div class="visual-box">
+                    <span class="symbol">🧠</span>
+                    <div class="label-overlay">
+                        <div class="big">PsicoValley</div>
+                        <div class="small">Counseling & Bienestar</div>
+                    </div>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">21</div>
-                <div class="stat-label">Datacrédito & Cifin</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">2+</div>
-                <div class="stat-label">Años de experiencia</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">Bogotá</div>
-                <div class="stat-label">Presencial & Online</div>
+            <div class="content-area">
+                <span class="badge">PsicoValley</span>
+                <h3>Consultoría Psicológica – PsicoValley</h3>
+                <p>Acompañamiento profesional desde el enfoque de Psychological Counseling. Un espacio confidencial diseñado para brindarte herramientas prácticas frente a las crisis de la vida diaria, el manejo del estrés y, de manera especializada, el impacto psicológico y emocional que genera el sobreendeudamiento.</p>
+                <a href="https://psicovalley.co" target="_blank" class="btn-psych">Cuidar mi Salud Mental en PsicoValley →</a>
             </div>
         </div>
+    </div>
+
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="section-label reveal">Trayectoria</div>
+        <h2 class="reveal">Mi Perfil Profesional</h2>
+        <p class="reveal reveal-delay-1">
+            Soy <span class="highlight">Psicólogo Profesional</span> y consultor especializado en la restauración del historial crediticio. Mi enfoque entiende que las crisis financieras impactan directamente la salud mental. Por eso, unifico ambas disciplinas para ofrecerte soluciones que no solo restauran tu perfil comercial, sino que también te devuelven la <span class="highlight">tranquilidad emocional</span>.
+        </p>
     </div>
 </section>
 
 <!-- ===== CONTACT ===== -->
-<section id="contact">
+<section class="contact" id="contacto">
     <div class="container">
-        <div class="section-eyebrow">Contacto</div>
-        <h2 class="section-title">Hablemos</h2>
-        <p class="section-desc" style="margin:0 auto 40px;">Estoy listo para ayudarte. Elige el medio que prefieras.</p>
-        <div class="contact-grid">
-            <a href="https://wa.me/573145777777" target="_blank" class="contact-card">
-                <div class="contact-icon">💬</div>
-                <h4>WhatsApp</h4>
-                <p>+57 314 5777777</p>
-            </a>
-            <a href="mailto:ale.documentospersonales@gmail.com" class="contact-card">
-                <div class="contact-icon">📧</div>
-                <h4>Email</h4>
-                <p>ale.documentospersonales<br>@gmail.com</p>
-            </a>
-            <a href="https://t.me/alejandrosalamanca" target="_blank" class="contact-card">
-                <div class="contact-icon">✈️</div>
-                <h4>Telegram</h4>
-                <p>@alejandrosalamanca</p>
+        <div class="section-label reveal">Contacto</div>
+        <h2 class="reveal">Da el primer paso hoy</h2>
+        <p class="reveal reveal-delay-1">
+            Agenda una consultoría personalizada para evaluar tu caso con total confidencialidad.
+        </p>
+        <div class="reveal reveal-delay-2">
+            <a href="https://wa.me/573145777777" target="_blank" class="btn-wa">
+                💬 Agendar por WhatsApp
             </a>
         </div>
     </div>
 </section>
 
-<footer>
-    <p>© 2026 Alejandro Salamanca · Bogotá, Colombia<br>
-    <a href="mailto:ale.documentospersonales@gmail.com">ale.documentospersonales@gmail.com</a></p>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <p>© 2026 Alejandro Salamanca Ávila. Bogotá, Colombia. Todos los derechos reservados.</p>
+
+    <div class="refs">
+        <strong>Inspiración para animaciones CSS puras:</strong><br>
+        <a href="https://www.awwwards.com/" target="_blank">Awwwards</a> ·
+        <a href="https://cssnectar.com/" target="_blank">CSS Nectar</a> ·
+        <a href="https://codepen.io/" target="_blank">CodePen</a>
+    </div>
 </footer>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/573145777777" target="_blank" class="whatsapp-float" aria-label="WhatsApp">💬</a>
+<!-- ===== WHATSAPP FLOAT ===== -->
+<a href="https://wa.me/573145777777" target="_blank" class="wa-float" aria-label="WhatsApp">💬</a>
 
+<!-- ===== SCRIPTS ===== -->
 <script>
-    document.getElementById('hamburger').addEventListener('click', function() {
-        document.getElementById('navLinks').classList.toggle('open');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.getElementById('navLinks').classList.remove('open');
+    (function() {
+        'use strict';
+
+        /* ---- Hamburger ---- */
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', function() {
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
         });
-    });
+
+        /* Close nav on link click */
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        /* ---- Scroll Reveal (Intersection Observer) ---- */
+        const revealElements = document.querySelectorAll('.reveal');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.08,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealElements.forEach(function(el) {
+                observer.observe(el);
+            });
+        } else {
+            /* Fallback: show everything */
+            revealElements.forEach(function(el) {
+                el.classList.add('visible');
+            });
+        }
+
+        /* ---- Header scroll effect ---- */
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }, { passive: true });
+    })();
 </script>
 
 </body>
