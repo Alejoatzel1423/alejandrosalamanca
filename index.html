@@ -79,7 +79,7 @@
         @keyframes bgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
         /* ===== PARTICLES ===== */
-        .particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:hidden}
+        .particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden}
         .particle{position:absolute;border-radius:50%;opacity:0;will-change:transform,opacity,top,left;animation-duration:20s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
         .particle:nth-child(1){width:6px;height:6px;background:var(--accent);animation-name:roam1;animation-delay:0s}
         .particle:nth-child(2){width:4px;height:4px;background:rgba(102,0,255,0.6);animation-name:roam2;animation-delay:.3s}
@@ -113,7 +113,7 @@
         .particle:nth-child(30){width:3px;height:3px;background:rgba(102,0,255,0.3);animation-name:roam15;animation-delay:8.7s}
 
         /* ===== BLUR CONTAINER ===== */
-        .blur-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:4;overflow:hidden}
+        .blur-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
         .blur-el{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.25;will-change:transform,opacity}
         .blur-el:nth-child(1){width:400px;height:400px;background:var(--accent);top:-10%;right:-5%;animation:jitterA 25s infinite}
         .blur-el:nth-child(2){width:300px;height:300px;background:rgba(102,0,255,0.2);bottom:10%;left:-5%;animation:jitterB 30s infinite}
@@ -129,7 +129,7 @@
         .blur-el:nth-child(12){width:260px;height:260px;background:rgba(102,0,255,0.12);top:50%;left:30%;animation:jitterC 33s infinite}
 
         /* ===== DECORATIVE LINES ===== */
-        .deco-lines{position:fixed;pointer-events:none;z-index:4;width:100%;height:100%;top:0;left:0;overflow:hidden}
+        .deco-lines{position:fixed;pointer-events:none;z-index:0;width:100%;height:100%;top:0;left:0;overflow:hidden}
         .deco-line{position:absolute;background:linear-gradient(90deg,transparent,rgba(102,0,255,0.06),transparent);height:1px;width:100%;will-change:transform}
         .deco-line:nth-child(1){top:15%;animation:jitterA 45s infinite}
         .deco-line:nth-child(2){top:33%;animation:jitterB 50s infinite}
@@ -169,7 +169,7 @@
 
         /* ===== HERO ===== */
         .hero{
-            min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:60px 0
+            min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:60px 0;z-index:2
         }
         .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 30% 50%,rgba(102,0,255,0.08),transparent 70%),var(--bg)}
         .hero-glow{
@@ -232,7 +232,7 @@
         .social a:hover{color:var(--text);background:rgba(255,255,255,0.04);transform:scale(1.1) rotate(5deg)}
 
         /* ===== SECTIONS con fondos animados ===== */
-        .section{padding:80px 0;position:relative;overflow:hidden;background-size:400% 400%;animation:bgShift 20s ease-in-out infinite}
+        .section{padding:80px 0;position:relative;overflow:hidden;background-size:400% 400%;animation:bgShift 20s ease-in-out infinite;z-index:2}
         .section:nth-of-type(1){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
         .section:nth-of-type(2){background:linear-gradient(135deg,#0c0a16,#1a1225,#0c0a16);}
         .section:nth-of-type(3){background:linear-gradient(135deg,#18141f,#1f1528,#18141f);}
@@ -326,13 +326,13 @@
         .cta-c .cl:hover{gap:12px}
 
         /* ===== GRATITUDE ===== */
-        .grat{padding:60px 28px 40px;position:relative;overflow:hidden}
+        .grat{padding:60px 28px 40px;position:relative;overflow:hidden;z-index:2}
         .grat .container{position:relative;z-index:2}
         .grat h2{font-family:var(--font-title);font-size:clamp(50px,9vw,110px);font-weight:500;color:var(--accent2);line-height:1.1;letter-spacing:-0.04em;margin-bottom:20px}
         .grat p{font-size:15px;line-height:1.6;color:var(--body);max-width:680px}
 
         /* ===== FOOTER ===== */
-        footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 28px 24px}
+        footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 28px 24px;position:relative;z-index:2}
         .fi{max-width:var(--max-w);margin:0 auto}
         .fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-bottom:28px}
         @media(max-width:768px){.fgrid{grid-template-columns:repeat(2,1fr)}}
@@ -342,7 +342,7 @@
         .fc a:hover{color:var(--accent);padding-left:6px}
         .fb{text-align:center;padding-top:20px;border-top:1px solid var(--border)}
         .fb p{font-size:12px;color:rgba(255,255,255,0.12)}
-        .mb{background:var(--bg);border-top:1px solid var(--border);padding:12px 28px;display:none}
+        .mb{background:var(--bg);border-top:1px solid var(--border);padding:12px 28px;display:none;position:relative;z-index:2}
         .mb .social{margin-top:0;justify-content:center}
         @media(max-width:768px){.mb{display:block}}
         ::-webkit-scrollbar{width:6px}
