@@ -22,7 +22,8 @@
             --brand:      #6600ff;
             --brand-dim:  rgba(102,0,255,0.08);
             --brand-mid:  rgba(102,0,255,0.15);
-            --ease:       cubic-bezier(0.16,1,0.3,1);
+            --ease-out:   cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-in-out:cubic-bezier(0.77, 0, 0.175, 1);
             --font-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
             --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
             --max-w:      1120px;
@@ -38,7 +39,8 @@
             background:var(--black);
             color:var(--white);
             line-height:1.6;
-            overflow-x:hidden
+            overflow-x:hidden;
+            -webkit-tap-highlight-color:transparent
         }
 
         ::selection{background:var(--brand);color:#fff}
@@ -56,7 +58,7 @@
         .header{
             position:fixed;top:0;left:0;right:0;z-index:1000;
             height:var(--nav-h);
-            transition:background 0.4s var(--ease),backdrop-filter 0.4s var(--ease)
+            transition:background 0.3s var(--ease-out),backdrop-filter 0.3s var(--ease-out)
         }
         .header.scrolled{
             background:rgba(0,0,0,0.88);
@@ -79,7 +81,7 @@
         .nav-links a{
             color:var(--gray);font-size:13px;font-weight:500;letter-spacing:0.2px;
             padding:8px 18px;border-radius:9999px;
-            transition:all 0.3s var(--ease)
+            transition:color 0.2s var(--ease-out),background 0.2s var(--ease-out)
         }
         .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}
         .nav-cta{
@@ -95,7 +97,7 @@
         }
         .hamburger span{
             width:24px;height:2px;background:var(--white);
-            border-radius:2px;transition:all 0.3s;display:block
+            border-radius:2px;transition:transform 0.2s var(--ease-out),opacity 0.2s var(--ease-out);display:block
         }
         .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
         .hamburger.active span:nth-child(2){opacity:0}
@@ -106,7 +108,7 @@
            ============================================================ */
         .reveal{
             opacity:0;transform:translateY(40px);
-            transition:opacity 0.8s var(--ease),transform 0.8s var(--ease)
+            transition:opacity 0.5s var(--ease-out),transform 0.5s var(--ease-out)
         }
         .reveal.visible{opacity:1;transform:translateY(0)}
         .r1{transition-delay:0.1s}
@@ -117,6 +119,7 @@
         @media (prefers-reduced-motion:reduce){
             .reveal{opacity:1;transform:none;transition:none}
             *{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+            .hero-badge .dot{animation:none;opacity:1}
         }
 
         /* ============================================================
@@ -205,8 +208,9 @@
             background:var(--dark);
             border:1px solid rgba(255,255,255,0.04);
             text-align:center;
-            transition:all 0.3s var(--ease)
+            transition:transform 0.2s var(--ease-out),border-color 0.2s var(--ease-out),background 0.2s var(--ease-out)
         }
+        .auth-card:active{transform:scale(0.97)}
         .auth-card:hover{
             border-color:var(--brand-mid);
             transform:translateY(-3px)
@@ -228,9 +232,11 @@
             padding:16px 36px;border-radius:9999px;
             font-family:var(--font-sans);font-size:15px;font-weight:600;
             border:none;cursor:pointer;letter-spacing:-0.1px;
-            transition:all 0.3s var(--ease);
-            text-decoration:none
+            transition:transform 0.2s var(--ease-out),box-shadow 0.2s var(--ease-out),background 0.2s var(--ease-out),border-color 0.2s var(--ease-out);
+            text-decoration:none;
+            -webkit-tap-highlight-color:transparent
         }
+        .btn:active{transform:scale(0.97)}
         .btn-primary{
             background:var(--brand);
             color:var(--white);
@@ -293,8 +299,9 @@
             border-radius:16px;
             background:var(--dark);
             border:1px solid rgba(255,255,255,0.04);
-            transition:all 0.4s var(--ease)
+            transition:transform 0.3s var(--ease-out),border-color 0.3s var(--ease-out),background 0.3s var(--ease-out)
         }
+        .step:active{transform:scale(0.98)}
         .step:hover{
             border-color:var(--brand-mid);
             transform:translateY(-4px)
@@ -363,10 +370,11 @@
             display:inline-flex;align-items:center;gap:8px;
             padding:13px 30px;border-radius:9999px;
             font-family:var(--font-sans);font-size:14px;font-weight:600;
-            transition:all 0.3s var(--ease);
+            transition:transform 0.2s var(--ease-out),background 0.2s var(--ease-out),border-color 0.2s var(--ease-out);
             background:transparent;color:var(--brand);
             border:1.5px solid var(--brand-mid)
         }
+        .btn-outline-brand:active{transform:scale(0.97)}
         .btn-outline-brand:hover{
             background:var(--brand-dim);
             transform:translateY(-2px)
@@ -448,10 +456,11 @@
             padding:18px 44px;border-radius:9999px;
             font-family:var(--font-sans);font-size:16px;font-weight:600;
             border:none;cursor:pointer;text-decoration:none;
-            transition:all 0.3s var(--ease);
+            transition:transform 0.2s var(--ease-out),box-shadow 0.2s var(--ease-out);
             background:var(--brand);color:var(--white);
             box-shadow:0 4px 24px rgba(102,0,255,0.25)
         }
+        .btn-wa:active{transform:scale(0.97)}
         .btn-wa:hover{
             transform:translateY(-2px);
             box-shadow:0 8px 36px rgba(102,0,255,0.35)
@@ -487,9 +496,10 @@
             display:flex;align-items:center;justify-content:center;
             text-decoration:none;
             box-shadow:0 4px 20px rgba(102,0,255,0.2);
-            transition:all 0.3s var(--ease);border:none
+            transition:transform 0.2s var(--ease-out),box-shadow 0.2s var(--ease-out);border:none
         }
         .wa-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(102,0,255,0.3)}
+        .wa-float:active{transform:scale(0.92)}
         .wa-float svg{width:24px;height:24px;fill:var(--white)}
 
         /* ============================================================
