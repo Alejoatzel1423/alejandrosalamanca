@@ -8,6 +8,8 @@
     <meta name="theme-color" content="#18141f">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%2318141f'/><text x='50' y='66' text-anchor='middle' fill='%236600ff' font-size='38' font-weight='500' font-family='serif'>AS</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
         @font-face {
             font-family: 'Creato display';
@@ -48,7 +50,7 @@
         a{color:inherit;text-decoration:none}ul{list-style:none}button{border:none;background:none;cursor:pointer;font-family:inherit}
         img{max-width:100%;height:auto;display:block}
         .container{max-width:var(--max-w);margin:0 auto;padding:0 28px}
-        @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}}
 
         /* ===== ANIMACIONES ===== */
         @keyframes roam1{0%{opacity:0;top:5%;left:10%}10%{opacity:1;top:20%;left:30%}30%{opacity:.8;top:40%;left:5%}50%{opacity:1;top:60%;left:50%}70%{opacity:.7;top:80%;left:10%}90%{opacity:1;top:70%;left:30%}100%{opacity:0;top:5%;left:10%}}
@@ -72,21 +74,13 @@
         @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
         @keyframes pulseGlow{0%,100%{box-shadow:0 0 20px rgba(102,0,255,0.2)}50%{box-shadow:0 0 60px rgba(102,0,255,0.5)}}
         @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        @keyframes float{0%,100%{transform:translateY(0px)}33%{transform:translateY(-10px)}66%{transform:translateY(5px)}}
-        @keyframes floatSlow{0%,100%{transform:translateY(0px) rotate(0deg)}25%{transform:translateY(-5px) rotate(1deg)}50%{transform:translateY(-12px) rotate(0deg)}75%{transform:translateY(-3px) rotate(-1deg)}}
-        @keyframes scaleIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
-        @keyframes slideLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
-        @keyframes slideRight{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
         @keyframes morphBlob{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}33%{border-radius:30% 70% 70% 30%/30% 50% 70% 50%}66%{border-radius:70% 30% 50% 50%/50% 70% 30% 50%}}
         @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-        @keyframes wiggle{0%,100%{transform:rotate(0deg)}25%{transform:rotate(2deg)}75%{transform:rotate(-2deg)}}
         @keyframes bgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        @keyframes breathe{0%,100%{opacity:0.3}50%{opacity:0.7}}
-        @keyframes spinSlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 
-        /* ===== PARTICLES (30 - MUY VISIBLES SOBRE TODO) ===== */
+        /* ===== PARTICLES ===== */
         .particle-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:hidden}
-        .particle{position:absolute;border-radius:50%;opacity:0;filter:blur(1.5px);animation-duration:20s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
+        .particle{position:absolute;border-radius:50%;opacity:0;will-change:transform,opacity,top,left;animation-duration:20s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
         .particle:nth-child(1){width:6px;height:6px;background:var(--accent);animation-name:roam1;animation-delay:0s}
         .particle:nth-child(2){width:4px;height:4px;background:rgba(102,0,255,0.6);animation-name:roam2;animation-delay:.3s}
         .particle:nth-child(3){width:8px;height:8px;background:var(--accent);animation-name:roam3;animation-delay:.6s}
@@ -118,30 +112,31 @@
         .particle:nth-child(29){width:9px;height:9px;background:var(--accent);animation-name:roam14;animation-delay:8.4s}
         .particle:nth-child(30){width:3px;height:3px;background:rgba(102,0,255,0.3);animation-name:roam15;animation-delay:8.7s}
 
-        /* ===== BLUR ELEMENTS (12) ===== */
-        .blur-el{position:fixed;border-radius:50%;pointer-events:none;z-index:4;filter:blur(60px);opacity:0.3}
-        .blur-el:nth-child(31){width:400px;height:400px;background:var(--accent);top:-10%;right:-5%;animation:jitterA 25s infinite}
-        .blur-el:nth-child(32){width:300px;height:300px;background:rgba(102,0,255,0.2);bottom:10%;left:-5%;animation:jitterB 30s infinite}
-        .blur-el:nth-child(33){width:250px;height:250px;background:rgba(68,0,169,0.15);top:40%;left:50%;animation:jitterC 35s infinite}
-        .blur-el:nth-child(34){width:350px;height:350px;background:rgba(102,0,255,0.12);bottom:-10%;right:20%;animation:jitterA 28s infinite}
-        .blur-el:nth-child(35){width:200px;height:200px;background:rgba(68,0,169,0.2);top:20%;left:10%;animation:jitterB 40s infinite}
-        .blur-el:nth-child(36){width:280px;height:280px;background:rgba(102,0,255,0.1);top:60%;left:60%;animation:jitterC 32s infinite}
-        .blur-el:nth-child(37){width:180px;height:180px;background:rgba(168,85,247,0.15);top:5%;left:40%;animation:jitterA 22s infinite}
-        .blur-el:nth-child(38){width:320px;height:320px;background:rgba(68,0,169,0.1);bottom:30%;right:10%;animation:jitterB 38s infinite}
-        .blur-el:nth-child(39){width:220px;height:220px;background:rgba(102,0,255,0.15);top:70%;left:15%;animation:jitterC 27s infinite}
-        .blur-el:nth-child(40){width:380px;height:380px;background:rgba(168,85,247,0.08);top:30%;right:-10%;animation:jitterA 45s infinite}
-        .blur-el:nth-child(41){width:160px;height:160px;background:rgba(68,0,169,0.2);bottom:5%;left:50%;animation:jitterB 20s infinite}
-        .blur-el:nth-child(42){width:260px;height:260px;background:rgba(102,0,255,0.12);top:50%;left:30%;animation:jitterC 33s infinite}
+        /* ===== BLUR CONTAINER ===== */
+        .blur-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:4;overflow:hidden}
+        .blur-el{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.25;will-change:transform,opacity}
+        .blur-el:nth-child(1){width:400px;height:400px;background:var(--accent);top:-10%;right:-5%;animation:jitterA 25s infinite}
+        .blur-el:nth-child(2){width:300px;height:300px;background:rgba(102,0,255,0.2);bottom:10%;left:-5%;animation:jitterB 30s infinite}
+        .blur-el:nth-child(3){width:250px;height:250px;background:rgba(68,0,169,0.15);top:40%;left:50%;animation:jitterC 35s infinite}
+        .blur-el:nth-child(4){width:350px;height:350px;background:rgba(102,0,255,0.12);bottom:-10%;right:20%;animation:jitterA 28s infinite}
+        .blur-el:nth-child(5){width:200px;height:200px;background:rgba(68,0,169,0.2);top:20%;left:10%;animation:jitterB 40s infinite}
+        .blur-el:nth-child(6){width:280px;height:280px;background:rgba(102,0,255,0.1);top:60%;left:60%;animation:jitterC 32s infinite}
+        .blur-el:nth-child(7){width:180px;height:180px;background:rgba(168,85,247,0.15);top:5%;left:40%;animation:jitterA 22s infinite}
+        .blur-el:nth-child(8){width:320px;height:320px;background:rgba(68,0,169,0.1);bottom:30%;right:10%;animation:jitterB 38s infinite}
+        .blur-el:nth-child(9){width:220px;height:220px;background:rgba(102,0,255,0.15);top:70%;left:15%;animation:jitterC 27s infinite}
+        .blur-el:nth-child(10){width:380px;height:380px;background:rgba(168,85,247,0.08);top:30%;right:-10%;animation:jitterA 45s infinite}
+        .blur-el:nth-child(11){width:160px;height:160px;background:rgba(68,0,169,0.2);bottom:5%;left:50%;animation:jitterB 20s infinite}
+        .blur-el:nth-child(12){width:260px;height:260px;background:rgba(102,0,255,0.12);top:50%;left:30%;animation:jitterC 33s infinite}
 
         /* ===== DECORATIVE LINES ===== */
         .deco-lines{position:fixed;pointer-events:none;z-index:4;width:100%;height:100%;top:0;left:0;overflow:hidden}
-        .deco-line{position:absolute;background:linear-gradient(90deg,transparent,rgba(102,0,255,0.06),transparent);height:1px;width:100%}
-        .deco-line:nth-child(43){top:15%;animation:jitterA 45s infinite}
-        .deco-line:nth-child(44){top:33%;animation:jitterB 50s infinite}
-        .deco-line:nth-child(45){top:50%;animation:jitterC 55s infinite}
-        .deco-line:nth-child(46){top:66%;animation:jitterA 40s infinite}
-        .deco-line:nth-child(47){top:80%;animation:jitterB 48s infinite}
-        .deco-line:nth-child(48){top:92%;animation:jitterC 52s infinite}
+        .deco-line{position:absolute;background:linear-gradient(90deg,transparent,rgba(102,0,255,0.06),transparent);height:1px;width:100%;will-change:transform}
+        .deco-line:nth-child(1){top:15%;animation:jitterA 45s infinite}
+        .deco-line:nth-child(2){top:33%;animation:jitterB 50s infinite}
+        .deco-line:nth-child(3){top:50%;animation:jitterC 55s infinite}
+        .deco-line:nth-child(4){top:66%;animation:jitterA 40s infinite}
+        .deco-line:nth-child(5){top:80%;animation:jitterB 48s infinite}
+        .deco-line:nth-child(6){top:92%;animation:jitterC 52s infinite}
 
         /* ===== HEADER ===== */
         .hdr{
@@ -196,10 +191,20 @@
         @media(max-width:768px){.hero-acts{justify-content:center}}
         .hero-img-wrap{display:flex;justify-content:flex-end;align-items:center;opacity:0;animation:fadeUp .8s .5s forwards}
         @media(max-width:768px){.hero-img-wrap{justify-content:center}}
-        /* ===== HERO IMAGE (BIGGER) ===== */
-        .hero-img{width:clamp(300px,32vw,440px);height:clamp(300px,32vw,440px);border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.06);animation:float 4s ease-in-out infinite}
-        .hero-img img{width:100%;height:100%;object-fit:cover}
-        @media(max-width:768px){.hero-img{animation:none;width:280px;height:280px}}
+        /* ===== HERO IMAGE — NO FLOAT ON MOBILE ===== */
+        .hero-img{
+            width:clamp(300px,32vw,440px);height:clamp(300px,32vw,440px);border-radius:50%;
+            overflow:hidden;border:2px solid rgba(255,255,255,0.06);
+            animation:float 4s ease-in-out infinite;
+            -webkit-transform:translateZ(0);transform:translateZ(0);
+            will-change:transform;
+            backface-visibility:hidden;
+            -webkit-backface-visibility:hidden;
+        }
+        .hero-img img{width:100%;height:100%;object-fit:cover;-webkit-transform:translateZ(0);transform:translateZ(0)}
+        @media(max-width:768px){
+            .hero-img{animation:none!important;width:280px;height:280px;transform:none!important;-webkit-transform:none!important}
+        }
 
         /* ===== BUTTONS ===== */
         .btn{
@@ -226,15 +231,15 @@
         }
         .social a:hover{color:var(--text);background:rgba(255,255,255,0.04);transform:scale(1.1) rotate(5deg)}
 
-        /* ===== SECTIONS (con fondos animados) ===== */
+        /* ===== SECTIONS con fondos animados ===== */
         .section{padding:80px 0;position:relative;overflow:hidden;background-size:400% 400%;animation:bgShift 20s ease-in-out infinite}
-        .section:nth-child(2){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
-        .section:nth-child(4){background:linear-gradient(135deg,#0c0a16,#1a1225,#0c0a16);}
-        .section:nth-child(6){background:linear-gradient(135deg,#18141f,#1f1528,#18141f);}
-        .section:nth-child(8){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
-        .section:nth-child(10){background:linear-gradient(135deg,#18141f,#1f1528,#18141f);}
-        .section:nth-child(12){background:linear-gradient(135deg,#0c0a16,#1a1225,#0c0a16);}
-        .section:nth-child(14){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
+        .section:nth-of-type(1){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
+        .section:nth-of-type(2){background:linear-gradient(135deg,#0c0a16,#1a1225,#0c0a16);}
+        .section:nth-of-type(3){background:linear-gradient(135deg,#18141f,#1f1528,#18141f);}
+        .section:nth-of-type(4){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
+        .section:nth-of-type(5){background:linear-gradient(135deg,#18141f,#1f1528,#18141f);}
+        .section:nth-of-type(6){background:linear-gradient(135deg,#0c0a16,#1a1225,#0c0a16);}
+        .section:nth-of-type(7){background:linear-gradient(135deg,#18141f,#1a1625,#18141f);}
         .section-header{text-align:center;max-width:600px;margin:0 auto 50px}
         .section-header h2{margin-bottom:8px}
         .section-header p{font-size:16px;color:var(--body);line-height:1.5}
@@ -344,14 +349,35 @@
         ::-webkit-scrollbar-track{background:var(--bg)}
         ::-webkit-scrollbar-thumb{background:var(--bg2);border-radius:3px}
         ::-webkit-scrollbar-thumb:hover{background:#2a2440}
+
+        /* ===== MOBILE OPTIMIZATIONS ===== */
+        @media(max-width:768px){
+            .particle-container{animation-duration:30s}
+            .particle{animation-duration:30s!important}
+            .blur-el{opacity:0.15!important}
+        }
     </style>
 </head>
 <body>
 
-<!-- DECORATIVE -->
-<div class="particle-container"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
-<div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div>
-<div class="deco-lines"><div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div></div>
+<!-- DECORATIVE FIXED OVERLAYS (correct nth-child order) -->
+<div class="particle-container">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+</div>
+<div class="blur-container">
+    <div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div>
+    <div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div>
+    <div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div><div class="blur-el"></div>
+</div>
+<div class="deco-lines">
+    <div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div>
+    <div class="deco-line"></div><div class="deco-line"></div><div class="deco-line"></div>
+</div>
 
 <!-- HEADER -->
 <header class="hdr" id="hdr">
@@ -479,7 +505,7 @@
                 <i class="fas fa-heart ci"></i>
                 <span class="ct">Psicología</span>
                 <h3>Consultas Psicológicas</h3>
-                <p>Terapia individual, pareja y familiar. Presencial Bogotá y online. Enfoque de Psychological Counseling.</p>
+                <p>Terapia individual, pareja y familia. Presencial Bogotá y online. Enfoque de Psychological Counseling.</p>
             </div>
             <div class="card rv d2">
                 <i class="fas fa-shield-alt ci"></i>
@@ -515,3 +541,167 @@
             <div class="si">Soporte Técnico</div>
             <div class="si">Office 365</div>
             <div class="si">Google Workspace</div>
+            <div class="si">Mantenimiento PC</div>
+        </div>
+    </div>
+</section>
+
+<!-- COUNTERS -->
+<section class="section" style="background:var(--bg2);">
+    <div class="container">
+        <div class="ctr rv">
+            <div class="ctr-item"><div class="ctr-num">150+</div><div class="ctr-label">Consultas</div></div>
+            <div class="ctr-item"><div class="ctr-num">200+</div><div class="ctr-label">Reportes Limpiados</div></div>
+            <div class="ctr-item"><div class="ctr-num">8+</div><div class="ctr-label">Años de Experiencia</div></div>
+            <div class="ctr-item"><div class="ctr-num">98%</div><div class="ctr-label">Satisfacción</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="background:var(--bg);">
+    <div class="container">
+        <div class="section-header">
+            <span class="badge">Testimonios</span>
+            <h2 style="margin-bottom:6px;">Lo que dicen mis clientes</h2>
+            <p>Personas reales, resultados reales.</p>
+        </div>
+        <div class="tg">
+            <div class="tc rv d1">
+                <div class="ta">MC</div>
+                <div class="tn">María C.</div>
+                <div class="tr">"Profesional y humano. Salió todo rápido."</div>
+            </div>
+            <div class="tc rv d2">
+                <div class="ta">JR</div>
+                <div class="tn">Juan R.</div>
+                <div class="tr">"Me ayudó a limpiar mi historial en días."</div>
+            </div>
+            <div class="tc rv d3">
+                <div class="ta">LP</div>
+                <div class="tn">Laura P.</div>
+                <div class="tr">"Excelente atención. Muy recomendado."</div>
+            </div>
+            <div class="tc rv d4">
+                <div class="ta">AM</div>
+                <div class="tn">Andrés M.</div>
+                <div class="tr">"Terapia online súper cómoda y efectiva."</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA CARDS -->
+<section class="section" style="background:var(--bg2);" id="contacto">
+    <div class="container">
+        <div class="section-header">
+            <span class="badge">Contacto</span>
+            <h2 style="margin-bottom:6px;">Agenda tu consulta</h2>
+            <p>Psicología, finanzas o tecnología — estoy aquí para ayudarte.</p>
+        </div>
+        <div class="cta-g">
+            <div class="cta-c rv d1">
+                <div class="cc">
+                    <span class="cb">Psicología</span>
+                    <h3>Agenda tu primera sesión</h3>
+                    <p>Presencial en Bogotá u online. 50 minutos de sesión.</p>
+                    <a href="https://wa.me/573145777777" target="_blank" class="cl">WhatsApp <i class="fas fa-arrow-right" style="font-size:10px"></i></a>
+                </div>
+            </div>
+            <div class="cta-c rv d2">
+                <div class="cc">
+                    <span class="cb">Datacrédito</span>
+                    <h3>Limpia tu historial hoy</h3>
+                    <p>Revisión gratuita de tu caso sin compromiso.</p>
+                    <a href="https://wa.me/573145777777" target="_blank" class="cl">WhatsApp <i class="fas fa-arrow-right" style="font-size:10px"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GRATITUDE -->
+<section class="grat">
+    <div class="container">
+        <h2>SIEMPRE<br>GRACIAS</h2>
+        <p>Por confiar en mi trabajo. Cada consulta, cada proceso, cada equipo que dejo funcionando — es un paso más hacia tus metas.</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="fi">
+        <div class="fgrid">
+            <div class="fc">
+                <h4>Alejandro Salamanca</h4>
+                <a href="#hero">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="fc">
+                <h4>Servicios</h4>
+                <a href="#servicios">Psicología</a>
+                <a href="#servicios">Datacrédito</a>
+                <a href="#servicios">Sistemas</a>
+            </div>
+            <div class="fc">
+                <h4>Contacto</h4>
+                <a href="https://wa.me/573145777777" target="_blank">WhatsApp</a>
+                <a href="mailto:ale.documentospersonales@gmail.com">Email</a>
+            </div>
+            <div class="fc">
+                <h4>Legal</h4>
+                <a href="#">Términos</a>
+                <a href="#">Privacidad</a>
+            </div>
+        </div>
+        <div class="fb">
+            <p>© 2026 Alejandro Salamanca. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- MOBILE BOTTOM BAR -->
+<div class="mb">
+    <div class="social" style="margin:0">
+        <a href="https://wa.me/573145777777" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:ale.documentospersonales@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+</div>
+
+<script>
+    // Header scroll
+    const hdr = document.getElementById('hdr');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const s = window.scrollY;
+        if (s > 50) hdr.classList.add('sc');
+        else hdr.classList.remove('sc');
+        lastScroll = s;
+    }, {passive: true});
+
+    // Hamburguesa
+    const ham = document.getElementById('ham');
+    const nav = document.getElementById('nav');
+    ham.addEventListener('click', () => {
+        ham.classList.toggle('a');
+        nav.classList.toggle('o');
+    });
+    nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            ham.classList.remove('a');
+            nav.classList.remove('o');
+        });
+    });
+
+    // Intersection Observer para reveal
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('v');
+        });
+    }, {threshold: 0.1});
+    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
